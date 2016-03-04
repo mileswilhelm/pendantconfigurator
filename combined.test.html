@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -769,6 +769,18 @@ div.btnLabel {
 			font-weight: bold;
 		}
 		
+		.navButtons {
+			width: 50%;
+			right: 0;
+			bottom: 15%;
+			margin-right: 10px;
+			padding-left: 40px;
+		}
+		
+		.nav-tabs.nav-justified.progressSteps, .rightPanel, .navButtons {
+			position: fixed;
+		}
+		
 	</style>
   
   </head>
@@ -869,7 +881,7 @@ div.btnLabel {
 	
 		<div class="row">
 		
-			<ul class="nav nav-tabs nav-justified">
+			<ul class="nav nav-tabs nav-justified progressSteps">
 				<li role="presentation" class="steps active" data-slide="choosePendantRight"><a href="#">1. Choose a Pendant Body</a></li>
 				<li role="presentation" class="steps" data-slide="chooseButtonsRight"><a href="#">2. Choose Buttons and Switches</a></li>
 				<!--<li role="presentation" class="steps" data-slide="chooseCoversRight"><a href="#">3. Choose Button Covers</a></li>-->
@@ -970,10 +982,6 @@ div.btnLabel {
 		<div class="btnLabel">
 		</div>
 	</div>
-	<div class="button" data-json="pee" data-lol="lmao">
-		<div class="btnLabel">
-		</div>
-	</div>
 	<div class="button switch" data-partno="100UN80B10" data-desc="Maintained On-Off Push-Button" style="background-color:blue;">
 		<div class="btnLabel">
 		</div>
@@ -984,18 +992,6 @@ div.btnLabel {
 		<!--Pendant Buttons-->
 		<input type="hidden" name="Slot1" value=""></input>
 	</form>				
-				
-				</div>
-				
-				<div id="chooseButtonsLeft" class="hidden">
-				
-				</div>
-				
-				<div id="chooseCoversLeft" class="hidden">
-				
-				</div>
-				
-				<div id="reviewPendantLeft" class="hidden">
 				
 				</div>
 			
@@ -2205,22 +2201,24 @@ div.btnLabel {
 				</div>
 			
 			</div>
-		
-		</div>
-	
-	</div>
-	
-	<div class="container marginTop navButtons">
-	
-		<div class="row">
-		
-			<button class="btn btn-danger btn-lg" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span>Prev</button>
 			
-			<button class="btn btn-danger btn-lg floatRight" id="nextBtn">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+			<div class="container marginTop navButtons floatRight">
+	
+				<div class="row">
+		
+					<button class="btn btn-danger btn-lg" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span>Prev</button>
+			
+					<button class="btn btn-danger btn-lg floatRight" id="nextBtn">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+		
+				</div>
+	
+			</div>
 		
 		</div>
 	
 	</div>
+	
+	
 
 	</div>
 	
