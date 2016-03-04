@@ -1,7 +1,7 @@
 To Do:
 -Fix pendant sizing (change rem to em)
 -Side info expand on hover (maybe?)
--Right slide fixed position 
+ DONE               -Right slide fixed position 
 -Change pendant drop-down to select on the right 
 -Add all data attributes
 -Make form with hidden inputs 
