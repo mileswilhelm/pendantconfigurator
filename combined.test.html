@@ -9,10 +9,13 @@
 	
 	
 	<!-- Droid Serif font -->
-	<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+	
 	
 	<!-- Open Sans font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+	
+	<!--Roboto Slab font-->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -26,9 +29,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
-	<!-- chart.js -->
-	<script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"></script>
 	
 	
 	<!-- Font Awesome -->
@@ -115,12 +115,18 @@ div.btnLabel {
 }	
 .infoDisplay{
 	position: absolute;
-    left: 25.75rem;
+    left: 27.75rem;
     display: block;
-    border-left: red .375rem solid;
+    border-left: #FF2828 .75rem solid;
     height: 12.5rem;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     padding-left: 1rem;
+	font-family: 'Roboto Slab', serif;
+	color: #222;
+}
+
+.infoDisplay strong{
+	font-size: 2rem;
 }
 .infoDisplay.switchInfo{
 	height: 28.75rem;
@@ -510,8 +516,8 @@ div.btnLabel {
 		
 		
 		.dragDropItem.ui-draggable-dragging {
-			height: 200px;
-			width: 250px;
+			height: 150px;
+			width: 200px;
 		}
 		
 		/* I. Two Button Switches*/
@@ -921,64 +927,113 @@ div.btnLabel {
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" name="button1" class="buttonInput" value=""></input>
 			<div class="infoDisplay" >
-				Button: <span class="btnDesc"></span><br/>
-				PartNo: <span class="btnPartNo"></span><br/>
-				Cover:  <span class="btnCover"></span>				
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
 			</div>
 		</div>
 		<div class="buttonSpace" style="display:flex" id="lastBS" ><!--Button 2-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" name="button2" class="buttonInput" value=""></input>
 			<div class="infoDisplay" >
-				PartNo:<span class="btnPartNo"></span>
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
 			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 3-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button3" class="buttonInput" value=""></input>
 			<div class="infoDisplay" >
-				PartNo:<span class="btnPartNo"></span>
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
 			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 4-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button4" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 5-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button5" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 6-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button6" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 7-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button7" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 8-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button8" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 9-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button9" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 10-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button10" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 11-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button11" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 		<div class="buttonSpace" style="display:none" ><!--Button 12-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
 			<input type="hidden" disabled name="button12" class="buttonInput" value=""></input>
+			<div class="infoDisplay" >
+				<strong>Button</strong>: <span class="btnDesc"></span><br/>
+				<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+				<strong>Cover</strong>:  <span class="btnCover"></span>				
+			</div>
 		</div>
 	</div>
 				
-	<div class="button" data-partno="100UN80S10" data-desc="Momentary Single Speed Push-Button" >
+	<div class="button" data-partno="100UN80S10" data-desc="Momentary Single Speed Push-Button" data-cover="Black" >
 		<div class="btnLabel">
 		</div>
 	</div>
@@ -1184,7 +1239,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="twoButtonSwitch dragDropItem" data-desc="Momentary Single Speed Push-Button"></div>
+								<div class="twoButtonSwitch dragDropItem" data-desc="Momentary Single Speed Push-Button" data-partno="100UN80B10" data-cover="Black"></div>
 								
 								<!-- Part Number 100UN80B10-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80B10</span><br/>Maintained On/Off Push Button<br/>1 NO</p></div>
@@ -2315,8 +2370,14 @@ div.btnLabel {
 		});
 				
 		
-		/* Creates the draggable clone for any button [note: add a recycle-able class to all the draggables for reusability]  */
-		$(".dragDropItem").draggable({opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing"});
+		/* Creates the draggable clone for any button */
+		/*  helper:clone allows us to pull a clone, not the actual item
+			containment:window prevents the user from pulling the items off screen
+			appendTo:body allows the cloned item to be above everything in the html to avoid overflow and other styling
+			cursorAt: {top:[50% of the height of .dragDropItem.ui-draggable-dragging],left:[50% of the width of .dragDropItem.ui-draggable-dragging]}
+		
+		*/
+		$(".dragDropItem").draggable({opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing", cursorAt: {top:50,left:75}});
 		
 		
 		/* Toggles the flip on click of the specific boxes [front to back] */
@@ -2337,7 +2398,7 @@ div.btnLabel {
 		
 		/* Modal on page load */
 		$(window).load(function(){
-			$('#startModal').modal('show');
+			$('#startModl').modal('show');
 		});
 		
 		
@@ -2388,12 +2449,14 @@ div.btnLabel {
 			$(this).children(".infoDisplay").addClass("switchInfo");
 			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);			
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
+			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);			
 			//$(this).next(".buttonSpace").children(".infoDisplay").show();					
 		}else{
 			$(this).children(".btnLabel").addClass("btnLabel");
 			$(this).children(".infoDisplay").show();
 			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);
+			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
 			$(this).addClass("button");		
 			$(this).children(".buttonInput").val(ui.draggable.attr("data-part"));
 			$(this).children(".deleteButton").attr("style");
@@ -2412,6 +2475,7 @@ div.btnLabel {
 			$(this).siblings(".infoDisplay").hide();
 			$(this).siblings(".infoDisplay").children(".btnPartNo").html("");	
 			$(this).siblings(".infoDisplay").children(".btnDesc").html("");	
+			$(this).siblings(".infoDisplay").children(".btnCover").html("");	
 			$(this).siblings(".infoDisplay").removeClass("switchInfo");
 		}else{/*else it's just one button*/
 			$(this).parent(".buttonSpace").removeClass("button");
