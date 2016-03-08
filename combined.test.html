@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -2453,8 +2453,9 @@ div.btnLabel {
 	
 	</script>
 <script>
-	$("#typeOfPendant").change(function(){
-		$selection = $(this).val();
+	$('.firstPanelItem').click(function() {
+		var select_num = $(".firstPanelItem").index(this); 
+		$selection = (select_num + 1)*2;
 		$(".buttonSpace").css("display","none");
 		$(".buttonSpace").removeAttr("id");
 		$(".buttonSpace").children(".buttonInput").prop("disabled", true);
@@ -2477,9 +2478,6 @@ div.btnLabel {
 	 hoverClass: "hover",
 	 drop: function(event, ui){
 		$data = ui.draggable.data();
-		console.log($data);
-		$poop2 = $data.toString();
-		//alert($poop2);
 		
 		if(ui.draggable.hasClass("switch")){ /*if item dragged is a switch*/
 			$(this).addClass("button switch");
@@ -2529,7 +2527,7 @@ div.btnLabel {
 		}
 	});
 	
-	$('.firstPanelItem').click(function() {
+	/*$('.firstPanelItem').click(function() {
 		var select_num = $(".firstPanelItem").index(this);
 		console.log(select_num);
 		$('#typeOfPendant option').eq(select_num).attr('selected', 'selected');
@@ -2538,8 +2536,9 @@ div.btnLabel {
 		$(".buttonSpace").children(".buttonInput").prop("disabled", true);
 		$(".buttonSpace").slice(0, ((select_num+1)*2)).css("display","flex");
 		$(".buttonSpace").slice(0, ((select_num+1)*2)).children(".buttonInput").removeAttr("disabled");
-		$(".buttonSpace:eq("+ (select_num-1) +")").attr("id", "lastBS");
-	});
+		$(".buttonSpace:eq("+ (((select_num+1)*2)-1) +")").attr("id", "lastBS");
+	});*/
+	
 
 </script>
   </body>
