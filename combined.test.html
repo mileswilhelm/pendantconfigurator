@@ -780,6 +780,16 @@ div.btnLabel {
 			text-shadow: 5px 5px 12px #222;
 		}
 		
+		.buttonSpace.ui-droppable.button.switch.onOff:nth-child(odd) {
+			box-shadow: inset 0 0 1.475rem rgb(2, 58, 9), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			background: #10901A;
+		}
+		
+		.buttonSpace.ui-droppable.button.switch.onOff:nth-child(odd) .btnLabel {
+			box-shadow: inset 0 0 1.475rem rgb(2, 58, 9), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			border-color: #10901A;
+		}
+		
 	</style>
 	
 	<!--Form Styles-->
@@ -987,16 +997,7 @@ div.btnLabel {
 					<p class="lead center">Select the number of buttons for your pendant from the right</p>-->
 					
 					
-						<select name="type_of_pendant" id="typeOfPendant">
-							<option value="2">2-Buttons</option>
-							<option value="4">4-Buttons</option>
-							<option value="6">6-Buttons</option>
-							<option value="8">8-Buttons</option>
-							<option value="10">10-Buttons</option>
-							<option value="12">12-Buttons</option>
-						</select> 
-						
-						<br/>
+					
 						
 						<h2 class="center titleText">Your Custom Pendant</h2>
 						
@@ -1310,7 +1311,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="switch twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B10" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B10" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
 								
 								<!-- Part Number 100UN80B10-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80B10</span><br/>Maintained On/Off Push Button<br/>1 NO</p></div>
@@ -1341,7 +1342,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="switch twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
 								
 								<!-- Part Number 100UN80B11-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80B11</span><br/>Maintained On/Off Push Button<br/>1 NO + 1 NC</p></div>
@@ -1421,7 +1422,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
 								
 								<!-- Part Number 100UN80J11-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J11</span><br/>Mom. ON/OFF Push Button<br/>1NO 1NC</p></div>
@@ -1452,7 +1453,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J20" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J20" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
 								
 								<!-- Part Number 100UN80J20-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J20</span><br/>Mom. ON/OFF Push Button<br/>2NO w/o Interlock</p></div>
@@ -1483,7 +1484,7 @@ div.btnLabel {
 							<div class="front">
 							
 								<!-- div responsible for the look of the switch -->
-								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J22" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J22" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
 								
 								<!-- Part Number 100UN80J22-->
 								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J22</span><br/>Mom. ON/OFF Push Button<br/>2NO 2NC w/o Interlock</p></div>
@@ -2491,7 +2492,10 @@ div.btnLabel {
 			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);			
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
 			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);			
-			//$(this).next(".buttonSpace").children(".infoDisplay").show();					
+			//$(this).next(".buttonSpace").children(".infoDisplay").show();	
+				if(ui.draggable.hasClass("onOff")) {
+					$(this).addClass("button switch onOff");
+				}
 		}else{
 			$(this).children(".btnLabel").addClass("btnLabel");
 			$(this).children(".infoDisplay").show();
