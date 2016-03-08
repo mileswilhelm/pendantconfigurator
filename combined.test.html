@@ -165,24 +165,11 @@ div.btnLabel {
 			border: 0;
 		}
 		
-		.nav>li>a {
-			background: #555;
-			color: #5BC0DE;
+		ul.nav.nav-tabs.nav-justified.progressSteps {
+			right: 0;
 		}
 		
-		.nav>li.active>a {
-			font-weight: bold;
-			background: #eee;
-			color: #C1272D;
-		}
-		
-		.nav>li>a:focus, .nav>li>a:hover {
-			background: #777;
-		}
-		
-		.nav>li.active>a:focus, .nav>li.active>a:hover {
-			color: #C1272D;
-		}
+		.foo{background:#555;color:#5BC0DE;padding:10px 10px;display:block;cursor:pointer;}li.active>.foo{font-weight:bold;background:#eee;color:#C1272D;}li.steps{text-align:center;}li .foo:hover{background:#777;}li.active>.foo:hover {background:#fff;}
 		
 		@media screen and (min-width: 1901px) {
 			.nav-tabs.nav-justified {
@@ -408,13 +395,7 @@ div.btnLabel {
 			box-shadow: inset 0px 0px 22px 4px #999;
 		}
 		
-		.col-md-6 h2.center {
-			color:#FFFFFF;
-			font-weight: 700;
-			text-transform: uppercase;
-			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-			text-shadow: 5px 5px 12px #222;
-		}
+		
 		
 		/* Choose Pendant Body styles */
 		
@@ -791,8 +772,12 @@ div.btnLabel {
 			display: none;
 		}
 		
-		#choosePendantLeft {
-			text-align: center;
+		.titleText {
+			color: #FFFFFF;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			text-shadow: 5px 5px 12px #222;
 		}
 		
 	</style>
@@ -971,16 +956,16 @@ div.btnLabel {
 		
 		</div>
 	</nav>
-	
+	<style>.foo{background:#555;color:#5BC0DE;padding:10px 10px;display:block;cursor:pointer;}li.active>.foo{font-weight:bold;background:#eee;color:#C1272D;}li.steps{text-align:center;}li .foo:hover{background:#777;}li.active>.foo:hover {background:#fff;}</style></style></style>
 	<div class="container marginTop">
 	
 		<div class="row">
 		
 			<ul class="nav nav-tabs nav-justified progressSteps">
-				<li role="presentation" class="steps active" data-slide="choosePendantRight"><a href="#">1. Choose a Pendant Body</a></li>
-				<li role="presentation" class="steps" data-slide="chooseButtonsRight"><a href="#">2. Choose Buttons and Switches</a></li>
+				<li role="presentation" class="steps active" data-slide="choosePendantRight"><span class="foo">1. Choose a Pendant Body</a></li>
+				<li role="presentation" class="steps" data-slide="chooseButtonsRight"><span class="foo">2. Choose Buttons and Switches</a></li>
 				<!--<li role="presentation" class="steps" data-slide="chooseCoversRight"><a href="#">3. Choose Button Covers</a></li>-->
-				<li role="presentation" class="steps" data-slide="reviewPendantRight"><a href="#">3. Review your pendant</a></li>
+				<li role="presentation" class="steps" data-slide="reviewPendantRight"><span class="foo">3. Review your pendant</a></li>
 			</ul>
 		
 		</div>
@@ -1012,6 +997,8 @@ div.btnLabel {
 						</select> 
 						
 						<br/>
+						
+						<h2 class="center titleText">Your Custom Pendant</h2>
 						
 					<!-- Pendant body and drops go in here -->
 						<div id="pendant">
@@ -1156,7 +1143,7 @@ div.btnLabel {
 				<!-- Innards for step 1: choose a pendant body -->
 				<div id="choosePendantRight" class="posAbs rightPanelActive">
 				
-					<h2 class="center">1. Choose a Pendant Body</h2>
+					<h2 class="center titleText">1. Choose a Pendant Body</h2>
 					
 					<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
 						
@@ -1298,7 +1285,7 @@ div.btnLabel {
 				
 				
 				
-					<h2 class="center">2. Choose Buttons / Switches</h2>
+					<h2 class="center titleText">2. Choose Buttons / Switches</h2>
 					
 							<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
 						
@@ -2289,7 +2276,7 @@ div.btnLabel {
 				<!-- Innards for step 4: review -->
 				<div id="reviewPendantRight" class="posAbs rightPanelInactive">
 				
-					<h2 class="center panelFourTitle">Review Your Pendant</h2>
+					<h2 class="center panelFourTitle titleText">Review Your Pendant</h2>
 					
 						<div class="form-style-8">
 							<h2>Contact Information</h2>
