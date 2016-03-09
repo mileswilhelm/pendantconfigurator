@@ -124,7 +124,6 @@ div.btnLabel {
 	font-family: 'Roboto Slab', serif;
 	color: #222;
 }
-
 .infoDisplay strong{
 	font-size: 2rem;
 }
@@ -780,12 +779,12 @@ div.btnLabel {
 			text-shadow: 5px 5px 12px #222;
 		}
 		
-		.buttonSpace.ui-droppable.button.switch.onOff:nth-child(odd) {
+		.buttonSpace.switch.onOff:nth-child(odd) {
 			box-shadow: inset 0 0 1.475rem rgb(2, 58, 9), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 			background: #10901A;
 		}
 		
-		.buttonSpace.ui-droppable.button.switch.onOff:nth-child(odd) .btnLabel {
+		.buttonSpace.switch.onOff:nth-child(odd) .btnLabel {
 			box-shadow: inset 0 0 1.475rem rgb(2, 58, 9), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 			border-color: #10901A;
 		}
@@ -1002,6 +1001,7 @@ div.btnLabel {
 						<h2 class="center titleText">Your Custom Pendant</h2>
 						
 					<!-- Pendant body and drops go in here -->
+						<p><span id="pendantSpan">Two</span> Button Pendant</p>
 						<div id="pendant">
 		<div class="buttonSpace" style="display:flex" ><!--Button 1-->
 			<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
@@ -2228,7 +2228,6 @@ div.btnLabel {
 										
 											<!-- div responsible for the look of the switch 
 											<div class="blackButtonCover flexImage dragDropItem"></div>
-
 										</div>
 													
 									</div>
@@ -2244,7 +2243,6 @@ div.btnLabel {
 										
 											<!-- div responsible for the look of the switch 
 											<div class="greenButtonCover flexImage dragDropItem"></div>
-
 										</div>
 													
 									</div>
@@ -2259,7 +2257,6 @@ div.btnLabel {
 										
 											<!-- div responsible for the look of the switch 
 											<div class="redButtonCover flexImage dragDropItem"></div>
-
 										</div>
 													
 									</div>
@@ -2368,7 +2365,6 @@ div.btnLabel {
 			$("#nextBtn").css("left", 0);
 			$(".col-md-4").css("left", 0);
 			$(".col-md-6").css("right", 0);
-
 			$prev = $("#" + $current).prev().attr('id');
 			if($prev == 'choosePendantRight'){
 				$("#prevBtn").css("opacity", 0);
@@ -2448,13 +2444,13 @@ div.btnLabel {
 		
 		
 		
-
 		
 		
 	
 	</script>
 <script>
 	$('.firstPanelItem').click(function() {
+		$words = ["Two", "Four", "Six", "Eight", "Ten", "Twelve"];
 		var select_num = $(".firstPanelItem").index(this); 
 		$selection = (select_num + 1)*2;
 		$(".buttonSpace").css("display","none");
@@ -2463,7 +2459,7 @@ div.btnLabel {
 		$(".buttonSpace").slice(0, $selection).css("display","flex");
 		$(".buttonSpace").slice(0, $selection).children(".buttonInput").removeAttr("disabled");
 		$(".buttonSpace:eq("+ ($selection-1) +")").attr("id", "lastBS");
-			
+		$("#pendantSpan").html($words[select_num]);	
 	});
 	
 	$(".button").draggable({opacity: 0.7, helper: "clone", scroll: false});
@@ -2494,7 +2490,8 @@ div.btnLabel {
 			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);			
 			//$(this).next(".buttonSpace").children(".infoDisplay").show();	
 				if(ui.draggable.hasClass("onOff")) {
-					$(this).addClass("button switch onOff");
+					$(this).addClass("onOff");
+					$(this).next(".buttonSpace").addClass("onOff");
 				}
 		}else{
 			$(this).children(".btnLabel").addClass("btnLabel");
@@ -2512,7 +2509,9 @@ div.btnLabel {
 	$(".deleteButton").click(function(){
 		if($(this).parent(".buttonSpace").hasClass("switch")){/*if switch*/
 			$(this).parent(".buttonSpace").removeClass("button  switch");
+			$(this).parent(".buttonSpace").removeClass("onOff");
 			$(this).parent(".buttonSpace").next(".buttonSpace").removeClass("button  switch");
+			$(this).parent(".buttonSpace").next(".buttonSpace").removeClass("onOff");
 			$(this).next(".buttonInput").attr("value", "");
 			$(this).parent(".buttonSpace").next(".buttonSpace").children(".buttonInput").attr("value", "");
 			$(this).parent(".buttonSpace").next(".buttonSpace").children(".deleteButton").removeAttr("style");
@@ -2543,7 +2542,6 @@ div.btnLabel {
 		$(".buttonSpace:eq("+ (((select_num+1)*2)-1) +")").attr("id", "lastBS");
 	});*/
 	
-
 </script>
   </body>
 </html>
