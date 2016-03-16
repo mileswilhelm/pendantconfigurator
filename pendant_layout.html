@@ -2243,7 +2243,7 @@
 									<input type="email" class="form-control" name="customerEmail" placeholder="Email Address" required/>
 									
 									<textarea placeholder="Message"></textarea>
-									<input type="button" value="Send Request" />
+									<input type="button" id="sendRequest" value="Send Request" />
 									<!--<p class="marginMiniTop estimate pull-right">Estimated Price: $400.26</p>-->
 									
 									<input type="hidden" id="pendantButtonsInput" name="NumberOfButtons" value="Two Button Pendant">
@@ -2317,7 +2317,7 @@
 			/*Slot Four  */  {"partNumber":"", "btnDesc":""},
 			/*Slot Five  */  {"partNumber":"", "btnDesc":""},
 			/*Slot Six   */  {"partNumber":"", "btnDesc":""},
-			/*Slot Seven */  {"partNumber":"this one is number ", "btnDesc":"7"},
+			/*Slot Seven */  {"partNumber":"", "btnDesc":""},
 			/*Slot Eight */  {"partNumber":"", "btnDesc":""},
 			/*Slot Nine  */  {"partNumber":"", "btnDesc":""},
 			/*Slot Ten   */  {"partNumber":"", "btnDesc":""},
@@ -2329,32 +2329,35 @@
 			
 
 		
-		
+//	'[{"partNumber":"0", "btnDesc":"a"},{"partNumber":"1", "btnDesc":"b"},{"partNumber":"2", "btnDesc":"c"},
+//	{"partNumber":"3", "btnDesc":"d"}, {"partNumber":"4", "btnDesc":"e"}, {"partNumber":"", "btnDesc":""}, {"partNumber":"6", "btnDesc":"g"},
+//  {"partNumber":"7", "btnDesc":"h"},
+//  {"partNumber":"8", "btnDesc":"i"},
+// 	{"partNumber":"9", "btnDesc":"j"},
+// 	{"partNumber":"10", "btnDesc":"k"},
+//  {"partNumber":"11", "btnDesc":"l"}]'		
 		
 			
 
 			$("#poops").click(function() {
-				$("#testme").html(
-				"var jsonPendant = {\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
-				+ "\"}; " + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
-				+ "\"}; " + jsonPendantInfo[2].partNumber + "\", \"" + jsonPendantInfo[2].btnDesc
-				+ "\"}; " + jsonPendantInfo[3].partNumber + "\", \"" + jsonPendantInfo[3].btnDesc
-				+ "\"}; " + jsonPendantInfo[4].partNumber + "\", \"" + jsonPendantInfo[4].btnDesc
-				+ "\"}; " + jsonPendantInfo[5].partNumber + "\", \"" + jsonPendantInfo[5].btnDesc
-				+ "\"}; " + jsonPendantInfo[6].partNumber + "\", \"" + jsonPendantInfo[6].btnDesc
-				+ "\"}; " + jsonPendantInfo[7].partNumber + "\", \"" + jsonPendantInfo[7].btnDesc
-				+ "\"}; " + jsonPendantInfo[8].partNumber + "\", \"" + jsonPendantInfo[8].btnDesc
-				+ "\"}; " + jsonPendantInfo[9].partNumber + "\", \"" + jsonPendantInfo[9].btnDesc
-				+ "\"}; " + jsonPendantInfo[10].partNumber + "\", \"" + jsonPendantInfo[10].btnDesc
-				+ "\"}; " + jsonPendantInfo[11].partNumber + "\", \"" + jsonPendantInfo[11].btnDesc
+				$("#pendantSlotInfo").val(
+				"\'[{\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[2].partNumber + "\", \"" + jsonPendantInfo[2].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[3].partNumber + "\", \"" + jsonPendantInfo[3].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[4].partNumber + "\", \"" + jsonPendantInfo[4].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[5].partNumber + "\", \"" + jsonPendantInfo[5].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[6].partNumber + "\", \"" + jsonPendantInfo[6].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[7].partNumber + "\", \"" + jsonPendantInfo[7].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[8].partNumber + "\", \"" + jsonPendantInfo[8].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[9].partNumber + "\", \"" + jsonPendantInfo[9].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[10].partNumber + "\", \"" + jsonPendantInfo[10].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[11].partNumber + "\", \"" + jsonPendantInfo[11].btnDesc
+				+ "\"}]\'"
 				
 				);
 			});
 		
-		//		$("#testme").html(
-		//		for(var i = 0; i < jsonPendantInfo.length; i++) {
-		//		jsonPendantInfo[i].partNumber + " " + jsonPendantInfo[i].btnDesc + "<br>";
-		//	});
 			
 			
 			  
@@ -2508,7 +2511,11 @@
 			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);			
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
 			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
-
+			var index = $(".buttonSpace").index(this);
+			jsonPendantInfo[index].partNumber = $data.partno + " | Button 1/2 " ;
+			jsonPendantInfo[index].btnDesc = $data.desc;
+			jsonPendantInfo[index+1].partNumber = $data.partno + " | Button 2/2 ";
+			jsonPendantInfo[index+1].btnDesc = $data.desc;
 			
 			
 			//$(this).next(".buttonSpace").children(".infoDisplay").show();
