@@ -13,7 +13,6 @@
 	<!--Roboto Slab font-->
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -130,12 +129,11 @@
 		
 		div#pendant {
 			width: 20rem;
-			/*height: 150rem;*/
 			vertical-align: middle;
 			border-radius: 2rem;
-			-webkit-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
-			-moz-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
-			box-shadow: inset 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			-webkit-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			-moz-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			box-shadow: inset 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 			background: #FFEB3B;
 			display: inline-table;
 		}
@@ -248,10 +246,10 @@
 			padding: 20px 15px;
 		}
 		
-		.overflowControl {
+		/*.overflowControl {
 			overflow-y: auto;
 			overflow-x: hidden;
-		}
+		}*/
 		
 		.rightPanelActive {
 			opacity: 1;
@@ -273,6 +271,7 @@
 		
 		.products {
 			height: 515px;
+			overflow: auto;
 			-webkit-transition: 0.5s all ease;
 			-moz-transition: 0.5s all ease;
 			-o-transition: 0.5s all ease;
@@ -567,7 +566,7 @@
 		}
 		
 		.form-style-8{
-			font-family: 'Open Sans Condensed', arial, sans;
+			font-family: 'Open Sans', arial, sans;
 			width: 500px;
 			padding: 30px;
 			background: #FFFFFF;
@@ -579,10 +578,10 @@
 		.form-style-8 h2{
 			background: #4D4D4D;
 			text-transform: uppercase;
-			font-family: 'Open Sans Condensed', sans-serif;
+			font-family: 'Open Sans', sans-serif;
 			color: white;
 			font-size: 20px;
-			font-weight: 100;
+			font-weight: 600;
 			padding: 20px;
 			margin: -30px -30px 20px -30px;
 		}
@@ -629,13 +628,12 @@
 			display: inline-block;
 			cursor: pointer;
 			color: #FFFFFF;
-			font-family: 'Open Sans Condensed', sans-serif;
 			font-size: 14px;
 			padding: 8px 18px;
 			text-decoration: none;
 			text-transform: uppercase;
 			margin-top: 15px;
-			font-family: 'Open Sans Condensed', Arial;
+			font-family: 'Open Sans', Arial;
 		}
 		.form-style-8 input[type="button"]:hover, 
 		.form-style-8 input[type="submit"]:hover {
@@ -802,6 +800,14 @@
 		
 		} 
 		
+		@media screen and (min-height: 1000px){
+		
+			.products, .productsBorder {
+				height: 745px;
+			}
+		
+		}
+		
 		@media only screen 
 		and (min-device-width : 768px) 
 		and (max-device-width : 1024px)  { 
@@ -958,7 +964,7 @@
 					
 						<div class="buttonSpace" style="display:flex" ><!--Button 1-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" name="button1" class="buttonInput" value=""></input>
+							<input type="hidden" name="button1" class="buttonInput" value="">
 								<div class="infoDisplay" >
 									<strong>Button</strong>: <span class="btnDesc"></span><br/>
 									<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -968,7 +974,7 @@
 	
 						<div class="buttonSpace" style="display:flex" id="lastBS" ><!--Button 2-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" name="button2" class="buttonInput" value=""></input>
+							<input type="hidden" name="button2" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -978,7 +984,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 3-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button3" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button3" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -988,7 +994,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 4-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button4" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button4" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -998,7 +1004,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 5-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button5" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button5" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1008,7 +1014,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 6-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button6" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button6" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1018,7 +1024,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 7-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button7" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button7" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1028,7 +1034,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 8-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button8" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button8" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1038,7 +1044,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 9-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button9" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button9" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1048,7 +1054,7 @@
 	
 						<div class="buttonSpace" style="display:none" ><!--Button 10-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button10" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button10" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1058,7 +1064,7 @@
 				
 						<div class="buttonSpace" style="display:none" ><!--Button 11-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button11" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button11" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1068,7 +1074,7 @@
 				
 						<div class="buttonSpace" style="display:none" ><!--Button 12-->
 							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
-							<input type="hidden" disabled name="button12" class="buttonInput" value=""></input>
+							<input type="hidden" disabled name="button12" class="buttonInput" value="">
 							<div class="infoDisplay" >
 								<strong>Button</strong>: <span class="btnDesc"></span><br/>
 								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
@@ -1239,7 +1245,7 @@
 						
 			<div class="panel-heading panelToggler">
 							
-				<span>
+				<span class="panelOpen">
 					
 					Maintained Buttons
 				
@@ -1247,7 +1253,7 @@
 						
 			</div>
 			
-			<div class="panel-body" style="display: none;">
+			<div class="panel-body" style="display: block;">
 						
 				<ul class="flexContainer">
 				
@@ -2225,7 +2231,11 @@
 					
 						<div class="form-style-8">
 							<h2>Contact Information</h2>
-								<form>
+							
+							<button id="poops">CLICK</button>
+			<div id="testme"></div>
+							
+								<form action="sendMail.php" method="post" id="submitform">
 									<input type="text" class="form-control" name="customerName" placeholder="Full Name" required/>
 									<input type="text" name="companyName" placeholder="Company Name" />
 									<input type="tel" class="form-control" name="customerPhone" placeholder="Phone Number" required/>
@@ -2234,7 +2244,26 @@
 									
 									<textarea placeholder="Message"></textarea>
 									<input type="button" value="Send Request" />
-									<p class="marginMiniTop estimate pull-right">Estimated Price: $400.26</p>
+									<!--<p class="marginMiniTop estimate pull-right">Estimated Price: $400.26</p>-->
+									
+									<input type="hidden" id="pendantButtonsInput" name="NumberOfButtons" value="Two Button Pendant">
+									
+									<input type="hidden" id="pendantSlotOne" name="pendantSlotOne" value="">
+									<input type="hidden" id="pendantSlotTwo" name="pendantSlotTwo" value="">
+									<input type="hidden" id="pendantSlotThree" name="pendantSlotThree" value="">
+									<input type="hidden" id="pendantSlotFour" name="pendantSlotFour" value="">
+									<input type="hidden" id="pendantSlotFive" name="pendantSlotFive" value="">
+									<input type="hidden" id="pendantSlotSix" name="pendantSlotSix" value="">
+									<input type="hidden" id="pendantSlotSeven" name="pendantSlotSeven" value="">
+									<input type="hidden" id="pendantSlotEight" name="pendantSlotEight" value="">
+									<input type="hidden" id="pendantSlotNine" name="pendantSlotNine" value="">
+									<input type="hidden" id="pendantSlotTen" name="pendantSlotTen" value="">
+									<input type="hidden" id="pendantSlotEleven" name="pendantSlotEleven" value="">
+									<input type="hidden" id="pendantSlotTwelve" name="pendantSlotTwelve" value="">
+									
+									<input type="hidden" id="pendantSlotInfo" name="pendantSlotInfo" value="">
+								
+									
 								</form>
 						</div>
 					
@@ -2253,6 +2282,9 @@
 		<div class="row">
 		
 			<button class="btn btn-aci btn-lg" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span> Prev</button>
+			
+			
+			
 			
 			<button class="btn btn-aci btn-lg pull-right" id="nextBtn">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
 		
@@ -2276,6 +2308,56 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	
 	<script>
+	
+
+			var jsonPendantInfo = [
+			/*Slot One   */  {"partNumber":"turd", "btnDesc":"fart"},
+			/*Slot Two   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Three */  {"partNumber":"", "btnDesc":""},
+			/*Slot Four  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Five  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Six   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Seven */  {"partNumber":"this one is number ", "btnDesc":"7"},
+			/*Slot Eight */  {"partNumber":"", "btnDesc":""},
+			/*Slot Nine  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Ten   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Eleven*/  {"partNumber":"", "btnDesc":""},
+			/*Slot Twelve*/  {"partNumber":"", "btnDesc":""},
+		
+			];
+
+			
+
+		
+		
+		
+			
+
+			$("#poops").click(function() {
+				$("#testme").html(
+				"var jsonPendant = {\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
+				+ "\"}; " + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
+				+ "\"}; " + jsonPendantInfo[2].partNumber + "\", \"" + jsonPendantInfo[2].btnDesc
+				+ "\"}; " + jsonPendantInfo[3].partNumber + "\", \"" + jsonPendantInfo[3].btnDesc
+				+ "\"}; " + jsonPendantInfo[4].partNumber + "\", \"" + jsonPendantInfo[4].btnDesc
+				+ "\"}; " + jsonPendantInfo[5].partNumber + "\", \"" + jsonPendantInfo[5].btnDesc
+				+ "\"}; " + jsonPendantInfo[6].partNumber + "\", \"" + jsonPendantInfo[6].btnDesc
+				+ "\"}; " + jsonPendantInfo[7].partNumber + "\", \"" + jsonPendantInfo[7].btnDesc
+				+ "\"}; " + jsonPendantInfo[8].partNumber + "\", \"" + jsonPendantInfo[8].btnDesc
+				+ "\"}; " + jsonPendantInfo[9].partNumber + "\", \"" + jsonPendantInfo[9].btnDesc
+				+ "\"}; " + jsonPendantInfo[10].partNumber + "\", \"" + jsonPendantInfo[10].btnDesc
+				+ "\"}; " + jsonPendantInfo[11].partNumber + "\", \"" + jsonPendantInfo[11].btnDesc
+				
+				);
+			});
+		
+		//		$("#testme").html(
+		//		for(var i = 0; i < jsonPendantInfo.length; i++) {
+		//		jsonPendantInfo[i].partNumber + " " + jsonPendantInfo[i].btnDesc + "<br>";
+		//	});
+			
+			
+			  
 	
 		$("#background").css("height", $(window).height()-50);
 		
@@ -2394,6 +2476,9 @@
 		$(".buttonSpace").slice(0, $selection).children(".buttonInput").removeAttr("disabled");
 		$(".buttonSpace:eq("+ ($selection-1) +")").attr("id", "lastBS");
 		$("#pendantSpan").html($words[select_num]);	
+		//$("#pendantButtonsInput").text() = $("#choosePendantLeft > p").text();
+		$("#pendantButtonsInput").val($("#choosePendantLeft > p").text());
+		
 	});
 	
 	$(".button").draggable({opacity: 0.7, helper: "clone", scroll: false});
@@ -2422,8 +2507,11 @@
 			$(this).children(".infoDisplay").addClass("switchInfo");
 			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);			
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
-			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);			
-			//$(this).next(".buttonSpace").children(".infoDisplay").show();	
+			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
+
+			
+			
+			//$(this).next(".buttonSpace").children(".infoDisplay").show();
 				if(ui.draggable.hasClass("onOff")) {
 					$(this).addClass("on");
 					$(this).next(".buttonSpace").addClass("off");
@@ -2437,6 +2525,10 @@
 			$(this).addClass("button");		
 			$(this).children(".buttonInput").val(ui.draggable.attr("data-part"));
 			$(this).children(".deleteButton").attr("style");
+			var index = $(".buttonSpace").index(this);
+			jsonPendantInfo[index].partNumber = $data.partno;
+			jsonPendantInfo[index].btnDesc = $data.desc;
+			
 				if(ui.draggable.hasClass("pushLock")) {
 					$(this).addClass("pushLock");
 				};
@@ -2452,6 +2544,7 @@
 				if(ui.draggable.hasClass("selectorSwitch")) {
 					$(this).addClass("selectorSwitch");
 				};  
+				
 			
 		}
 	 }
@@ -2478,6 +2571,8 @@
 			/*hide button side info and empty value being displayed*/
 			$(this).siblings(".infoDisplay").hide();
 			$(this).siblings(".infoDisplay").children(".btnPartNo").html("");
+			$(this).siblings(".infoDisplay").children(".btnDesc").html("");	
+			$(this).siblings(".infoDisplay").children(".btnCover").html("");
 		}
 	});
 	
