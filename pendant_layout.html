@@ -2494,7 +2494,23 @@
 			return true;
 			},
 	 activeClass: "highlightDrop", // gives this class to the droppable object when draggable is being dragged
-	 hoverClass: "hover",
+	 //hoverClass: "hover",
+	 over: function(event, ui){
+		$(this).removeClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").removeClass("hover");
+		 }
+		$(this).addClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").addClass("hover");
+		 }
+	 },
+	 out: function(event, ui) {
+		$(this).removeClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").removeClass("hover");
+		 }	
+	 },
 	 drop: function(event, ui){
 		$data = ui.draggable.data();
 		
