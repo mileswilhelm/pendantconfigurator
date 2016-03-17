@@ -2248,19 +2248,6 @@
 									
 									<input type="hidden" id="pendantButtonsInput" name="NumberOfButtons" value="Two Button Pendant">
 									
-									<input type="hidden" id="pendantSlotOne" name="pendantSlotOne" value="">
-									<input type="hidden" id="pendantSlotTwo" name="pendantSlotTwo" value="">
-									<input type="hidden" id="pendantSlotThree" name="pendantSlotThree" value="">
-									<input type="hidden" id="pendantSlotFour" name="pendantSlotFour" value="">
-									<input type="hidden" id="pendantSlotFive" name="pendantSlotFive" value="">
-									<input type="hidden" id="pendantSlotSix" name="pendantSlotSix" value="">
-									<input type="hidden" id="pendantSlotSeven" name="pendantSlotSeven" value="">
-									<input type="hidden" id="pendantSlotEight" name="pendantSlotEight" value="">
-									<input type="hidden" id="pendantSlotNine" name="pendantSlotNine" value="">
-									<input type="hidden" id="pendantSlotTen" name="pendantSlotTen" value="">
-									<input type="hidden" id="pendantSlotEleven" name="pendantSlotEleven" value="">
-									<input type="hidden" id="pendantSlotTwelve" name="pendantSlotTwelve" value="">
-									
 									<input type="hidden" id="pendantSlotInfo" name="pendantSlotInfo" value="">
 								
 									
@@ -2311,7 +2298,7 @@
 	
 
 			var jsonPendantInfo = [
-			/*Slot One   */  {"partNumber":"turd", "btnDesc":"fart"},
+			/*Slot One   */  {"partNumber":"", "btnDesc":""},
 			/*Slot Two   */  {"partNumber":"", "btnDesc":""},
 			/*Slot Three */  {"partNumber":"", "btnDesc":""},
 			/*Slot Four  */  {"partNumber":"", "btnDesc":""},
@@ -2325,19 +2312,6 @@
 			/*Slot Twelve*/  {"partNumber":"", "btnDesc":""},
 		
 			];
-
-			
-
-		
-//	'[{"partNumber":"0", "btnDesc":"a"},{"partNumber":"1", "btnDesc":"b"},{"partNumber":"2", "btnDesc":"c"},
-//	{"partNumber":"3", "btnDesc":"d"}, {"partNumber":"4", "btnDesc":"e"}, {"partNumber":"", "btnDesc":""}, {"partNumber":"6", "btnDesc":"g"},
-//  {"partNumber":"7", "btnDesc":"h"},
-//  {"partNumber":"8", "btnDesc":"i"},
-// 	{"partNumber":"9", "btnDesc":"j"},
-// 	{"partNumber":"10", "btnDesc":"k"},
-//  {"partNumber":"11", "btnDesc":"l"}]'		
-		
-			
 
 			$("#poops").click(function() {
 				$("#pendantSlotInfo").val(
@@ -2465,7 +2439,7 @@
 		
 		
 		
-	<!--Functions below graciously provided by Dido's Cafe-->	
+	/*Functions below graciously provided by Dido's Cafe*/	
 	
 
 	$('.firstPanelItem').click(function() {
@@ -2482,6 +2456,11 @@
 		//$("#pendantButtonsInput").text() = $("#choosePendantLeft > p").text();
 		$("#pendantButtonsInput").val($("#choosePendantLeft > p").text());
 		
+		/* Clears data from the object sent to PHP when the pendant size is changed to reflect. i works as selection number because it corresponds to the first number in the array to be emptied */		
+		for (i = $selection; i < 12; i++) {		
+			jsonPendantInfo[i].partNumber = "";		
+			jsonPendantInfo[i].btnDesc = "";		
+		};
 	});
 	
 	$(".button").draggable({opacity: 0.7, helper: "clone", scroll: false});
