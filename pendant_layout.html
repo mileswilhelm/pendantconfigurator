@@ -2491,8 +2491,13 @@
 		 }	
 	 },
 	 drop: function(event, ui){
+		 //remove hover class 
+		 $(this).removeClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").removeClass("hover");
+		 }
 		$data = ui.draggable.data();
-		
+	
 		if(ui.draggable.hasClass("switch")){ /*if item dragged is a switch*/
 			$(this).addClass("button switch");
 			$(this).children(".btnLabel").addClass("btnLabel");	
