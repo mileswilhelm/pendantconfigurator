@@ -1,0 +1,2606 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ACI Pendant Configurator</title>
+	
+	<!-- Open Sans font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+	
+	<!--Roboto Slab font-->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+	
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	<style>
+
+		body {
+			margin: 0;
+			padding: 0;
+			background: #333;
+			background: linear-gradient(#111, #222, #333, #555, #333, #222, #111);
+		}
+		
+		/*Navbar stylings*/
+		
+		nav.navbar.navbar-fixed-top {
+			background: #111;
+			border-bottom: 3px solid #C1272D;
+		}
+		
+		.navbar-default .navbar-brand {
+			color: #E0E0E0;
+		}
+		
+		.navbar-brand.brandImg img {
+			max-height: 40px;
+		}
+				
+		.navbar-brand.brandImg {
+			padding: 5px 20px;
+		}
+		
+		.navbar-header p.navbar-text {
+			color: white;
+			font-weight: bold;
+			font-size: 2rem;
+			line-height: 20px;
+			font-family: 'Open Sans';
+		}
+		
+		.navbar-brand.navbar-right {
+			cursor: pointer;
+		}
+		
+		/* Generic classes */
+		
+		.marginTop {
+			margin-top: 50px;
+		}
+		
+		.center {
+			text-align: center;
+		}
+		
+	/*replace with pull-right	.floatRight {
+			float: right;
+		} */
+		
+		.hidden {
+			display: none;
+		}
+		
+		.clear {
+			clear: both;
+		}
+		
+		.posAbs {
+			//position: absolute;
+		}
+		
+		/* Top Steps styling */
+		
+		.stepsTitle {
+			background: #555;
+			color: #5BC0DE;
+			padding: 10px 10px;
+			display: block;
+			cursor: pointer;
+		}
+		
+		li.active>.stepsTitle {
+			font-weight: bold;
+			background: #eee;
+			color: #C1272D;
+		}
+		
+		li.steps {
+			text-align: center;
+		}
+		
+		li .stepsTitle:hover {
+			background: #777;
+		}
+		
+		li.active>.stepsTitle:hover {
+			background:#fff;
+		}
+		
+		/* Pendant Stylings */
+		
+		div#pendant {
+			width: 20rem;
+			vertical-align: middle;
+			border-radius: 2rem;
+			-webkit-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			-moz-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			box-shadow: inset 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			background: #FFEB3B;
+			display: inline-table;
+		}
+		
+		div.button {
+			width: 12.5rem;
+			height: 12.5rem;
+			vertical-align: middle;
+			border-radius: 2rem;
+			display: flex;
+			-webkit-box-shadow: 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
+			-moz-box-shadow: 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
+			box-shadow: inset 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
+			background: #3E3E3E;
+		}
+		
+		div#pendant div.button{
+			margin: 3.75rem auto;
+		}
+		
+		div.btnLabel {
+			border: #1D1C1C solid .75rem;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 7.5rem;
+			height: 7.5rem;
+			width: 7.5rem;
+			margin: auto auto;
+			border-radius: 1.8rem;
+			font-size: 7.5rem;
+			font-family: monospace;
+			font-weight: bold;
+			display: inline-block;
+			-webkit-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			-moz-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			background: #d1d1d1;
+		}
+		
+		.buttonSpace {
+			width: 12.5rem;
+			height: 12.5rem;
+			margin: 3.75rem auto;
+			border-radius: 2rem;
+			//background-color: rgba(181, 171, 91, 0.66);
+			background-color: rgba(148, 139, 67, 0.66);
+			box-shadow: inset 0.05rem 0.125rem .5rem #555;
+		}
+		.buttonSpace div{
+			display: none;
+		}
+		.button > .btnLabel{
+			display: inline-block;
+		}
+		.deleteButton{
+			position: absolute;
+			color: rgba(0,0,0,0.50);
+			display: none;
+		}
+		.deleteButton:hover{
+			color: rgba(0,0,0,1);
+			cursor:pointer;
+		}
+		.button > i.deleteButton{
+			display: inline-block;
+		}
+		.highlightDrop{
+			/*box-shadow: white 0px 0px 20px 20px;*/
+			box-shadow: 0rem 0rem 1.5rem .75rem rgba(255,255,255,0.70);
+			background-color: rgba(181, 171, 91, 0.66);
+		}	
+		.infoDisplay{
+			position: absolute;
+			left: 22.75rem;
+			display: block;
+			border-left: #FF2828 .75rem solid;
+			height: 12.5rem;
+			font-size: 1.75rem;
+			padding-left: 1rem;
+			font-family: 'Roboto Slab', serif;
+			color: #222;
+		}
+		.infoDisplay strong{
+			font-size: 2rem;
+		}
+		.infoDisplay.switchInfo{
+			height: 28.75rem;
+		}
+		
+		/* Text Stylings */
+		
+		.titleText {
+			color: #FFFFFF;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			text-shadow: 5px 5px 12px #222;
+			margin-top: 0;
+		}
+		
+		/* Product Area Styling */
+		
+		.productArea {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+		
+		.productArea .products {
+			background: rgba(255,255,255,0.3);
+			padding: 20px 15px;
+		}
+		
+		/*.overflowControl {
+			overflow-y: auto;
+			overflow-x: hidden;
+		}*/
+		
+		.rightPanelActive {
+			opacity: 1;
+			z-index: 4;
+			transition: all 0.5s ease;
+		}
+		
+		button#prevBtn {
+			opacity: 0;
+			left: -5000px;
+		}
+		
+		.rightPanelInactive {
+			opacity: 0;
+			z-index: 1;
+			position: absolute;
+			left: -5000px;
+		}
+		
+		.products {
+			height: 515px;
+			overflow: auto;
+			-webkit-transition: 0.5s all ease;
+			-moz-transition: 0.5s all ease;
+			-o-transition: 0.5s all ease;
+			transition: 0.5s all ease;
+		}
+		
+		.productsBorder {
+			height: 515px;
+			width: 2px;
+			margin: 0 0.5%;
+			display: inline-block;
+			background: #bbb;
+			float: left;
+		}
+		
+		/* Flexbox */
+		
+		.panel-primary {
+			border: #999;
+			box-shadow: 3px 1px 4px 1px #555;
+		}
+		
+		.panel-primary>.panel-heading {
+			color: #fff;
+			background-image: none;
+			background-color: #f44;
+			border:0;
+			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			font-size: 2rem;
+			font-weight: 600;
+		}
+		
+		.panel-body {
+			background: #ccc;
+			border: 1px solid #888;
+		}
+		
+		.flexContainer {
+			perspective: 1000;
+		}
+		
+		.flipper.flipped {
+			transform: rotateY(180deg);
+		}
+		
+		.flipper {
+			transition: 0.6s;
+			transform-style: preserve-3d;
+			height: 100%;
+			width: 100%;
+		}
+		
+		.wiringDiagram {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.75);
+			padding: 10px;
+		}
+		
+		.wiringDiagram img {
+			max-height: 157px;
+			width: 228px;
+		}
+		
+		.front {
+			z-index: 2;
+			transform: rotateY(0deg);
+		}
+		
+		.back {
+			transform: rotateY(180deg);
+		}
+		
+		.partTitle {
+			font-size: 2rem;
+		}
+		
+		ul.flexContainer {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			align-content: flex-start;
+			list-style-type: none;
+			padding: 0;
+		}
+		
+		.flexItem {
+			width: 200px;
+			height: 200px;
+			margin: 10px auto auto auto;
+			border: 1px solid #333;
+			position: relative;
+			list-style-type: none;
+		}
+		
+		.partNumber {
+			position: absolute;
+			bottom: -33px;
+			left: 0;
+			width: 100%;
+			background: rgba(0,0,0,0.5);
+			color: white;
+			font-size: 15px;
+			padding-left: 1rem;
+			transition: all 0.35s ease;
+		}
+	
+		.front, .back {
+			width: 100%;
+			height: 100%;
+			cursor: all-scroll;
+			cursor: grab;
+			cursor: -webkit-grab;
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+		}
+		
+		.fa-info-circle, .fa-chevron-circle-left {
+			display: inline;
+			position: absolute;
+			color: rgba(0,0,0,0.7);
+			top: 0;
+			right: 0;
+			margin: 1rem;
+			cursor: pointer;
+		}
+		
+		.fa-info-circle:hover, .fa-chevron-circle-left:hover {
+			color: rgba(0,0,0,1);
+		}
+		
+		.front:hover>.partNumber {
+			background: rgba(150,0,0,0.85);
+			bottom: 0px;
+		}
+		
+		.twoButtonPendant {
+			background: url(images/twobutton.png) no-repeat center center;
+		}
+		
+		.fourButtonPendant {
+			background: url(images/fourbutton.png) no-repeat center center;
+		}
+		
+		.sixButtonPendant {
+			background: url(images/sixbutton.png) no-repeat center center;
+		}
+		
+		.eightButtonPendant {
+			background: url(images/eightbutton.png) no-repeat center center;
+		}
+		
+		.tenButtonPendant {
+			background: url(images/tenbutton.png) no-repeat center center;
+		}
+		
+		.twelveButtonPendant {
+			background: url(images/twelvebutton.png) no-repeat center center;
+		}
+		
+		.flexImage {
+			background-size: cover;
+			height: 100%;
+		}
+		
+		.front.firstPanelItem {
+			cursor: pointer;
+		}
+		
+		.panel-heading span:after {
+			font-family:'Glyphicons Halflings';
+			content:"\e114";
+			float: right;
+			color: white;
+		}
+	
+		.panel-heading span.panelOpen:after {
+			content:"\e080";
+		}
+		
+		.panelToggler {
+			cursor: pointer;
+		}
+		
+		.partNumber.sectionTwoCard {
+			bottom: -53px;
+		}
+		
+		/* Styles for the second page items */
+		
+		/* All draggable page two items have the partTwoItem class, allowing the clones made on all types to have sizes */
+		
+		
+		
+		.dragDropItem.ui-draggable-dragging {
+			height: 150px;
+			width: 200px;
+		}
+		
+		/* I. Two Button Switches*/
+		
+		.twoButtonSwitch {
+			background: url(images/two_switch.png) no-repeat center center;
+			background-size: cover;
+			height: 100%;
+		}
+		
+		/* II. Selector Switch */
+		
+		.selectorSwitch {
+			background: url(images/selector_switch.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* III. Key Switch */
+		
+		.keySwitch {
+			background: url(images/key_switch.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* IV. toggle Switch */
+		
+		.toggleSwitch {
+			background: url(images/toggle_switch.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* V. Key Switch */
+		
+		.altSwitch {
+			background: url(images/alternate_switch.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* VI. Push Lock */
+		
+		.pushLock {
+			background: url(images/push_lock.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* VII. Blind Rubber */
+		
+		.blindRubber {
+			background: url(images/blind_rubber.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		/* VIII. One Button */
+		
+		.oneButtonSwitch {
+			background: url(images/one_switch.png) no-repeat center center;
+			height: 100%;
+		}
+		
+		.smallThirdLine {
+			font-size: 1.25rem;
+		}
+		
+		/* Previous/Next Button Styling */
+		
+		.btn-aci {
+			background: #f33;
+			color: white;
+			border-radius: 0;
+		}
+		
+		.btn-aci:hover, .btn-aci:focus  {
+			color: white;
+			background: #f11;
+			background: -webkit-linear-gradient(#f33,#f11); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#f33,#f11); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#f33,#f11); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#f33,#f11)
+		}
+		
+		/* Last Panel */
+		
+		.estimate {
+			margin-right: 15px;
+			font-size: 22px;
+			color: #B70000;
+			font-weight: bold;
+			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+		}
+		
+		.form-style-8{
+			font-family: 'Open Sans', arial, sans;
+			width: 500px;
+			padding: 30px;
+			background: #FFFFFF;
+			margin: 25px auto;
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+			-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+			-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+		}
+		.form-style-8 h2{
+			background: #4D4D4D;
+			text-transform: uppercase;
+			font-family: 'Open Sans', sans-serif;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 20px;
+			margin: -30px -30px 20px -30px;
+		}
+		.form-style-8 input[type="text"],
+		.form-style-8 input[type="date"],
+		.form-style-8 input[type="datetime"],
+		.form-style-8 input[type="email"],
+		.form-style-8 input[type="number"],
+		.form-style-8 input[type="search"],
+		.form-style-8 input[type="time"],
+		.form-style-8 input[type="url"],
+		.form-style-8 input[type="password"],
+		.form-style-8 input[type="tel"],
+		.form-style-8 textarea,
+		.form-style-8 select 
+		{
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			outline: none;
+			display: block;
+			width: 100%;
+			padding: 7px;
+			border: none;
+			border-bottom: 1px solid #ddd;
+			background: transparent;
+			margin-bottom: 10px;
+			font: 16px Arial, Helvetica, sans-serif;
+			height: 45px;
+		}
+		.form-style-8 textarea{
+			resize:none;
+			overflow-y: auto;
+			height: 90px;
+			border: 1px solid #ddd;
+		}
+		.form-style-8 input[type="button"], 
+		.form-style-8 input[type="submit"]{
+			-moz-box-shadow: inset 0px 1px 0px 0px #45D65E;
+			-webkit-box-shadow: inset 0px 1px 0px 0px #45D65E;
+			box-shadow: inset 0px 1px 0px 0px #45D65E;
+			background-color: #2CBB44;
+			border: 1px solid #27A047;
+			display: inline-block;
+			cursor: pointer;
+			color: #FFFFFF;
+			font-size: 14px;
+			padding: 8px 18px;
+			text-decoration: none;
+			text-transform: uppercase;
+			margin-top: 15px;
+			font-family: 'Open Sans', Arial;
+		}
+		.form-style-8 input[type="button"]:hover, 
+		.form-style-8 input[type="submit"]:hover {
+			background: linear-gradient(to bottom, #34CA40 5%, #30C943 100%);
+			background-color: #34CA46;
+		}
+		
+		/* Animated buttons */
+		
+		.buttonSpace.switch.on {
+			box-shadow: inset 0 0 1.475rem rgb(2, 58, 9), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			background: #10901A;
+		}
+		
+		.buttonSpace.switch.on .btnLabel {
+			-webkit-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			-moz-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
+			border-color: #10901A;
+		}
+		
+		.buttonSpace.switch.off {
+			-webkit-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			-moz-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			box-shadow: inset 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
+			background: #EC1000;
+		}
+		
+		.buttonSpace.switch.off .btnLabel {
+			border: #EC1000 solid .75rem;
+			
+		}
+		
+		.buttonSpace.button.pushLock {
+			border-radius: 6rem;
+			background: #FF6A00;
+			box-shadow: inset 0 0 1rem rgba(0,0,0,0.6), 0rem 0rem 2rem rgba(0,0,0,0.75);
+		}
+		
+		.buttonSpace.button.pushLock .btnLabel {
+			border: 0;
+			background: none;
+			-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+			-moz-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+			box-shadow: 0 0 0 0 rgba(0,0,0,0);
+			transition: 0.5s all ease;
+		}
+		
+		.hover {
+			background: rgba(255,255,255,0.55);
+		}
+		
+		.buttonSpace.selectorSwitch {
+			border-radius: 10rem;
+		}
+		
+		.buttonSpace.switch.on .btnLabel:hover {
+			border-color: green;
+			background: #bbb;
+			box-shadow: inset 0 0 5px 1px black, 0 0 20px 10px rgba(0,0,0,0.35);
+		}
+		
+		.buttonSpace.switch.off .btnLabel:hover {
+			border-color: #E20000;
+			background: #bbb;
+			box-shadow: inset 0 0 5px 1px black, 0 0 20px 10px rgba(0,0,0,0.35);
+		}	
+
+		.buttonSpace.button .btnLabel:hover {
+			border-color: #000;
+			background: #bbb;
+			box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.85), 0 0 20px 10px rgba(0,0,0,0.5);
+		}
+		
+		.buttonSpace.button.selectorSwitch .btnLabel {
+			width: 4rem;
+			height: 11rem;
+			transform: rotate(-45deg);
+			transition: 0.5s all;
+			border: 0.5rem rgba(216, 215, 215, 0.25) solid;
+			-webkit-box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
+			-moz-box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
+			box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
+			background: linear-gradient(to right,#323232,#101010,#323232);
+			border-radius: 1rem;
+		}
+		
+		.buttonSpace.button.selectorSwitch .btnLabel:hover {
+			transform: rotate(45deg);
+		}
+		
+		.buttonSpace.button.blindRubber .btnLabel {
+			opacity: 0;
+		}
+		
+		.buttonSpace.button.selectorSwitch .btnLabel:hover {
+			transform: rotate(45deg);
+		}
+		
+		.buttonSpace.button.toggleSwitch .btnLabel:hover {
+			transform: rotate(-90deg);
+			right: -15px;
+		}
+		.buttonSpace.button.toggleSwitch .btnLabel {
+			box-shadow: inset 0 0 0px 0px rgba(84,84,84,0.5), 0 0 0 0 rgba(0,0,0,0);
+			background: none;
+			border: 0;
+			background-image: url("images/toggle1.png");
+			transform: rotate(-17deg);
+			transition: 0.3s all ease;
+			position: relative;
+			top: 14px;
+			right: 15px;
+			width: 75%;
+			background-repeat: no-repeat;
+		}
+		
+		.buttonSpace.button.pushLock .btnLabel:before {
+			content: "\f021";
+			font-family: "FontAwesome";
+			color: #dedede;
+		}
+		
+		.buttonSpace.ui-droppable.button.pushLock .btnLabel:hover {
+			transform: rotate(90deg);
+			border:0;
+			background: none;
+			box-shadow: inset 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
+		}
+		
+		/* Screen fixes for non-desktops */
+		
+		/*@media screen and (max-width: 800px) {
+			.nav-tabs.nav-justified>li {
+				float: left;
+				width: 33.3%;
+			}
+			
+			li.steps span.stepsTitle {
+				height: 60px;
+				font-size: 13px;
+			}
+
+			.navbar-header p.navbar-text {
+				font-size: 1.5rem;
+			}
+			
+			.productArea {
+				margin-left: 0;
+				margin-right: 0;
+			}
+			
+		} */
+		
+		@media screen and (min-height: 800px) {
+		
+			.products, .productsBorder {
+				height: 615px;
+			}
+			
+			.flexItem {
+				width: 250px;
+			}
+		
+		} 
+		
+		@media screen and (min-height: 1000px){
+		
+			.products, .productsBorder {
+				height: 745px;
+			}
+		
+		}
+		
+		@media only screen 
+		and (min-device-width : 768px) 
+		and (max-device-width : 1024px)  { 
+		
+			.nav-tabs.nav-justified>li {
+				float: left;
+				width: 33.3%;
+			}
+			
+			li.steps span.stepsTitle {
+				height: 60px;
+				font-size: 13px;
+			}
+
+			.navbar-header p.navbar-text {
+				font-size: 1.5rem;
+			}
+			
+			.productArea {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		
+		}
+		
+		@media only screen and (min-width: 992px) {
+			.products.col-md-6 {
+				width: 57%;
+			}
+		}
+		
+		
+
+	</style>
+
+	</head>
+
+	<body>
+
+		<div class="modal in fade" id="startModal">
+	
+		<div class="container">
+			<div class="row">
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal">×</a>
+					<h1>ACI Pendant Configurator</h1>
+				</div>
+			
+				<div class="modal-body">
+					
+					<form action="">
+						<div class="tabbable">
+							<ul class="nav nav-tabs hide">
+								<li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+								<li class=""><a href="#tab2" data-toggle="tab">Section 2</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="tab1">
+									<p id="modalStartParagraph">This is ACI's revolutionary custom pendant configuration app. You can use this to choose which type of pendant you would like to customize, which buttons and switches you need, and even the color button covers you desire.</p>
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Press next to go through our tutorial or close to start configuring.</em></strong></p></div>
+									<a href="#tab2" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
+								</div>
+								<div class="tab-pane" id="tab2">
+									<h3 class="center">Choose a Pendant Body</h3>
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Select the number of button slots needed for your custom pendant.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slideone.jpg" alt="This slide shows that you select the number of buttons you want from the right side"/></div>
+									<a href="#tab1" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
+									<a href="#tab3" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
+								</div>
+								<div class="tab-pane" id="tab3">
+									<h3 class="center">Choose your Buttons and Switches</h3>
+									
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Simply click and drag the button or switch you want into the slot you need it in.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidetwo.jpg" alt="This slide shows that you drag the buttons/switches you want from the right side onto the pendant on the left"/></div>
+									<a href="#tab2" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
+									<a href="#tab4" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
+								</div>
+								<div class="tab-pane" id="tab4">
+									<h3 class="center">Choose your Button Covers</h3>
+									<a href="#tab3" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
+									<a href="#tab5" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
+								</div>
+								<div class="tab-pane" id="tab5">
+									<h3 class="center">Review your Pendant</h3>
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Once your pendant looks right, send a quote request for your custom built pendant!</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidefour.jpg" alt="This slide shows that you drag the buttons/switches you want from the right side onto the pendant on the left"/></div>
+									
+									<a href="#tab4" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
+									<a href="#tab5" data-toggle="tab" class="btn btn-danger pull-right modalControl" data-dismiss="modal">Done</a>
+								</div>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+			
+				<a class="navbar-brand brandImg" href="#">
+					
+					<img src="https://acihoist.com/uploads/Products/a60937eba57758ed45b6d3e91e8659f3/1455885890-nohoistlogo.png">
+				
+				</a>
+				
+				<p class="navbar-text">Custom Pendant Configurator</p>
+				
+			</div>
+		
+		</div>
+	</nav>
+	
+	<div class="container marginTop">
+	
+		<div class="row">
+		
+			<ul class="nav nav-tabs nav-justified progressSteps">
+				<li role="presentation" class="steps active" data-slide="choosePendantRight"><span class="stepsTitle">1. Choose a Pendant Body</a></li>
+				<li role="presentation" class="steps" data-slide="chooseButtonsRight"><span class="stepsTitle">2. Choose Buttons and Switches</a></li>
+				<!--<li role="presentation" class="steps" data-slide="chooseCoversRight"><a href="#">3. Choose Button Covers</a></li>-->
+				<li role="presentation" class="steps" data-slide="reviewPendantRight"><span class="stepsTitle">3. Review your pendant</a></li>
+			</ul>
+		
+		</div>
+	
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div class="row marginTop productArea">
+	
+		<div class="col-md-5 products" style="left:0;">
+		
+			<div id="choosePendantLeft">
+		
+				<!--<h2 class="center titleText">Choose a Pendant Body</h2>
+				
+				<p class="lead center">Select the number of buttons for your pendant from the right</p>-->
+				
+				
+				
+					
+					<h2 class="center titleText">Your Custom Pendant</h2>
+					
+				<!-- Pendant body and drops go in here -->
+					<p class="center lead"><span id="pendantSpan">Two</span> Button Pendant</p>
+					
+					<div id="pendant">
+					
+						<div class="buttonSpace" style="display:flex" ><!--Button 1-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" name="button1" class="buttonInput" value="">
+								<div class="infoDisplay" >
+									<strong>Button</strong>: <span class="btnDesc"></span><br/>
+									<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+									<strong>Cover</strong>:  <span class="btnCover"></span>				
+								</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:flex" id="lastBS" ><!--Button 2-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" name="button2" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 3-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button3" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 4-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button4" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 5-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button5" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 6-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button6" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 7-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button7" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 8-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button8" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 9-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button9" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+	
+						<div class="buttonSpace" style="display:none" ><!--Button 10-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button10" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+				
+						<div class="buttonSpace" style="display:none" ><!--Button 11-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button11" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+				
+						<div class="buttonSpace" style="display:none" ><!--Button 12-->
+							<div class="btnLabel"></div>			<i class="fa fa-times-circle fa-3x deleteButton" ></i>
+							<input type="hidden" disabled name="button12" class="buttonInput" value="">
+							<div class="infoDisplay" >
+								<strong>Button</strong>: <span class="btnDesc"></span><br/>
+								<strong>Part Number</strong>: <span class="btnPartNo"></span><br/>
+								<strong>Cover</strong>:  <span class="btnCover"></span>				
+							</div>
+						</div>
+				
+					</div>			
+			
+			</div>
+		
+		</div>
+		
+		<div class="productsBorder"></div>
+		
+		<div class="col-md-6 products overflowControl" style="right: 0;">
+		
+			<!-- Innards for step 1: choose a pendant body -->
+				<div id="choosePendantRight" class="posAbs rightPanelActive">
+				
+					<h2 class="center titleText">1. Choose a Pendant Body</h2>
+					
+					<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+						<div class="panel-heading">
+							
+							Number of Buttons
+						
+						</div>
+						
+						<div class="panel-body">
+						
+							<ul class="flexContainer">
+				
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="twoButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Two Button</span><br/>100 Series Pendant</div>
+											
+										</div>
+													
+									</div>
+											
+											
+								</li>
+											
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="fourButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Four Button</span><br/>100 Series Pendant</div>
+											
+										</div>
+													
+									</div>
+								
+								</li>
+								
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="sixButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Six Button</span><br/>100 Series Pendant</div>
+
+										</div>
+													
+									</div>
+								
+								</li>
+								
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="eightButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Eight Button</span><br/>100 Series Pendant</div>
+
+										</div>
+													
+									</div>
+								
+								</li>
+								
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="tenButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Ten Button</span><br/>100 Series Pendant</div>
+
+										</div>
+		
+									</div>
+								
+								</li>
+								
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front firstPanelItem">
+										
+											<!-- div responsible for the look of the switch -->
+											<div class="twelveButtonPendant flexImage"></div>
+											
+											<!-- Part Number 100UN80J210-->
+											<div class="partNumber"><p><span class="partTitle">Twelve Button</span><br/>100 Series Pendant</div>
+
+										</div>
+		
+									</div>
+								
+								</li>
+											
+							</ul>
+									
+						</div>
+						
+					</div>
+					
+
+				
+					
+				
+				</div>
+				
+				<!-- 
+				
+				Innards for step 2: choose buttons and switches 
+				
+				-->
+				<div id="chooseButtonsRight" class="posAbs rightPanelInactive">
+				
+				
+				
+					<h2 class="center titleText">2. Choose Buttons / Switches</h2>
+					
+							<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+			<div class="panel-heading panelToggler">
+							
+				<span class="panelOpen">
+					
+					Maintained Buttons
+				
+				</span>
+						
+			</div>
+			
+			<div class="panel-body" style="display: block;">
+						
+				<ul class="flexContainer">
+				
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B10" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								
+								<!-- Part Number 100UN80B10-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80B10</span><br/>Maintained On/Off Push Button<br/>1 NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80B10"><img src="images/100UN80B10.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Maintained Single Speed Push-Button Switch" data-partno="100UN80B11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								
+								<!-- Part Number 100UN80B11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80B11</span><br/>Maintained On/Off Push Button<br/>1 NO + 1 NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80B11"><img src="images/100UN80B11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="selectorSwitch dragDropItem" data-desc="2 or 3 Position Maintained Switch" data-partno="100UN80P302" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80P302-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80P302</span><br/>2 or 3 Pos. Maintained Selector<br/>2 NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80P302"><img src="images/100UN80P302.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+					
+				<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+						<div class="panel-heading panelToggler">
+							
+							<span>Momentary Buttons</span>
+						
+						</div>
+						
+						<div class="panel-body" style="display:none;">
+						
+							<ul class="flexContainer">
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J11" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								
+								<!-- Part Number 100UN80J11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J11</span><br/>Mom. ON/OFF Push Button<br/>1NO 1NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80J11"><img src="images/100UN80J11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J20" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								
+								<!-- Part Number 100UN80J20-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J20</span><br/>Mom. ON/OFF Push Button<br/>2NO w/o Interlock</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80J20"><img src="images/100UN80J20.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch onOff twoButtonSwitch dragDropItem" data-desc="Momentary ON/OFF Push-Button Switch" data-partno="100UN80J22" data-cover="Green<br/><strong>Cover</strong>:Red"></div>
+								
+								<!-- Part Number 100UN80J22-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80J22</span><br/>Mom. ON/OFF Push Button<br/>2NO 2NC w/o Interlock</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80J22"><img src="images/100UN80J22.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Single Speed Push-Button Switch" data-partno="100UN80C20" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80C20-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80C20</span><br/>Single Speed Push Button<br/>1NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80C20"><img src="images/100UN80C20.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Single Speed Push-Button Switch" data-partno="100UN80C22" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80C22-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80C22</span><br/>Single Speed Push Button<br/>1NO + 1NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80C22"><img src="images/100UN80C22.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Dual Speed Push-Button Switch" data-partno="100UN80D40" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80D40-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80D40</span><br/>Dual Speed Push Button<br/>4NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80D40"><img src="images/100UN80D40.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Dual Speed Push-Button Switch" data-partno="100UN80D44" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80D44-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80D44</span><br/>Dual Speed Push Button<br/>4NO + 4NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80D44"><img src="images/100UN80D44.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Dual Speed Push-Button Switch" data-partno="100UN80D48" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80D48-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80D48</span><br/>Dual Speed Push Button<br/>4NO + 4NC <span class="smallThirdLine">(delayed opening of 7-8)</span></p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80D48"><img src="images/100UN80D48.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="oneButtonSwitch dragDropItem" data-desc="Momentary Single Push-Button" data-partno="100UN80S10" data-cover="Black"></div>
+								
+								<!-- Part Number 100UN80S10-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80S10</span><br/>Momentary Single Button<br/>1NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80S10"><img src="images/100UN80S10.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="oneButtonSwitch dragDropItem" data-desc="Momentary Single Push-Button" data-partno="100UN80S11" data-cover="Black"></div>
+								
+								<!-- Part Number 100UN80S11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80S11</span><br/>Momentary Single Button<br/>1NO 1NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80S11"><img src="images/100UN80S11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Push-Button Switch with Mechanical Interlock" data-partno="100UN80T40" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80T40-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80T40</span><br/>Momentary w/ Mech. Interlock<br/>4NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80T40"><img src="images/100UN80T40.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Push-Button Switch with Mechanical Interlock" data-partno="100UN80T44" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80T44-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80T44</span><br/>Momentary w/ Mech. Interlock<br/>4NO 4NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80T44"><img src="images/100UN80T44.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="switch twoButtonSwitch dragDropItem" data-desc="Momentary Three Speed Push-Button Switch with Mechanical Interlock" data-partno="100UN80W62" data-cover="Black<br/><strong>Cover</strong>:Black"></div>
+								
+								<!-- Part Number 100UN80W62-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80W62</span><br/>Three Speed PB w/ Interlock<br/>6NO + 2NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80W62"><img src="images/100UN80W62.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+		
+		<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+			<div class="panel-heading panelToggler">
+							
+				<span>Alternating Push Buttons</span>
+						
+			</div>
+						
+			<div class="panel-body" style="display:none;">
+						
+				<ul class="flexContainer">
+				
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="altSwitch dragDropItem" data-desc="Alternating Push-Button" data-partno="100UN80E10" data-cover="Black"></div>
+								
+								<!-- Part Number 100UN80E10-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80E10</span><br/>Alternating Push Button<br/>1 NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80E10"><img src="images/100UN80E10.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="altSwitch dragDropItem" data-desc="Alternating Push-Button" data-partno="100UN80E11" data-cover="Black"></div>
+								
+								<!-- Part Number 100UN80E11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80E11</span><br/>Alternating Push Button<br/>1NO + 1NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80E11"><img src="images/100UN80E11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="altSwitch dragDropItem" data-desc="Alternating Push-Button" data-partno="100UN80E20" data-cover="Black"></div>
+								
+								<!-- Part Number 100UN80E20-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80E20</span><br/>Alternating Push Button<br/>2NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80E20"><img src="images/100UN80E20.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+		
+		<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+			<div class="panel-heading panelToggler">
+							
+				<span>Toggle Switches</span>
+						
+			</div>
+						
+			<div class="panel-body" style="display:none;">
+						
+				<ul class="flexContainer">
+				
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="toggleSwitch dragDropItem" data-desc="Toggle Switch" data-partno="100UN80F10" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80F10-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80F10</span><br/>Toggle Switch<br/>1 NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80F10"><img src="images/100UN80F10.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="toggleSwitch dragDropItem" data-desc="Toggle Switch" data-partno="100UN80F11" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80F11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80F11</span><br/>Toggle Switch<br/>1NO + 1NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80F11"><img src="images/100UN80F11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="toggleSwitch dragDropItem" data-desc="Toggle Switch" data-partno="100UN80F20" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80F20-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80F20</span><br/>Toggle Switch<br/>2NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80F20"><img src="images/100UN80F20.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+		
+		<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+			<div class="panel-heading panelToggler">
+							
+				<span>Push Locks</span>
+						
+			</div>
+						
+			<div class="panel-body" style="display:none;">
+						
+				<ul class="flexContainer">
+				
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="pushLock dragDropItem" data-desc="Push Lock" data-partno="100UN80MK01" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80MK01-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80MK01</span><br/>Mushroom Push Lock<br/>1 NC</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80MK01"><img src="images/100UN80MK01.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="pushLock dragDropItem" data-desc="Push Lock" data-partno="100UN80MK02" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80MK02-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80MK02</span><br/>Mushroom Push Lock<br/>1NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80MK02"><img src="images/100UN80MK02.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="pushLock dragDropItem" data-desc="Push Lock" data-partno="100UN80MK11" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80MK11-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80MK11</span><br/>Mushroom Push Lock<br/>1NC + 1NO</p></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-info-circle fa-2x" title="Click here to display the wiring diagram"></i>
+								
+							</div>
+							
+							<div class="back">
+							
+								<!-- Wiring Diagram -->
+								<div class="wiringDiagram" id="100UN80MK11"><img src="images/100UN80MK11.png" /></div>
+								
+								<!-- Flip div toggler -->
+								<i class="fa fa-chevron-circle-left fa-2x" title="Click here to display the product" ></i>
+							
+							</div>
+							
+						</div>
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+		
+		<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+			<div class="panel-heading panelToggler">
+							
+				<span>Blind Rubber</span>
+						
+			</div>
+						
+			<div class="panel-body" style="display:none;">
+						
+				<ul class="flexContainer">
+				
+					<li class="flexItem">
+					
+						<div class="flipper">
+						
+							<div class="front">
+							
+								<!-- div responsible for the look of the switch -->
+								<div class="blindRubber dragDropItem" data-desc="Blind Rubber" data-partno="100UN80H" data-cover="N/A"></div>
+								
+								<!-- Part Number 100UN80H-->
+								<div class="partNumber sectionTwoCard"><p><span class="partTitle">100UN80H</span><br/>Blind Rubber<br/>&nbsp;</p></div>
+								
+							</div>
+							
+						</div>
+					
+					
+					</li>
+					
+				</ul>
+									
+			</div>
+						
+		</div>
+					
+					
+					
+					
+				<!-- End of Panel 2 -->
+				</div>
+				
+				<!-- Innards for step 3: choose button covers 
+				<div id="chooseCoversRight" class="posAbs rightPanelInactive">
+				
+					<h2 class="center">3. Choose Button Covers</h2>
+					
+					<div class="panel panel-primary" style="background-color: rgba(255,255,255,0.55); border-color: #333;">
+						
+						<div class="panel-heading">
+							
+							Button Covers
+						
+						</div>
+						
+						<div class="panel-body">
+						
+							<ul class="flexContainer">
+				
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front">
+										
+											<!-- div responsible for the look of the switch 
+											<div class="blackButtonCover flexImage dragDropItem"></div>
+										</div>
+													
+									</div>
+											
+											
+								</li>
+											
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front">
+										
+											<!-- div responsible for the look of the switch 
+											<div class="greenButtonCover flexImage dragDropItem"></div>
+										</div>
+													
+									</div>
+								
+								</li>
+								
+								<li class="flexItem">
+								
+									<div class="flipper">
+									
+										<div class="front">
+										
+											<!-- div responsible for the look of the switch 
+											<div class="redButtonCover flexImage dragDropItem"></div>
+										</div>
+													
+									</div>
+								
+								</li>
+											
+							</ul>
+									
+						</div>
+						
+					</div>
+				
+				</div> -->
+				
+				<!-- Innards for step 4: review -->
+				<div id="reviewPendantRight" class="posAbs rightPanelInactive">
+				
+					<h2 class="center panelFourTitle titleText">Review Your Pendant</h2>
+					
+						<div class="form-style-8">
+							<h2>Contact Information</h2>
+							
+							<button id="poops">CLICK</button>
+			<div id="testme"></div>
+							
+								<form action="sendMail.php" method="post" id="submitform">
+									<input type="text" class="form-control" name="customerName" placeholder="Full Name" required/>
+									<input type="text" name="companyName" placeholder="Company Name" />
+									<input type="tel" class="form-control" name="customerPhone" placeholder="Phone Number" required/>
+									
+									<input type="email" class="form-control" name="customerEmail" placeholder="Email Address" required/>
+									
+									<textarea placeholder="Message"></textarea>
+									<input type="button" id="sendRequest" value="Send Request" />
+									<!--<p class="marginMiniTop estimate pull-right">Estimated Price: $400.26</p>-->
+									
+									<input type="hidden" id="pendantButtonsInput" name="NumberOfButtons" value="Two Button Pendant">
+									
+									<input type="hidden" id="pendantSlotOne" name="pendantSlotOne" value="">
+									<input type="hidden" id="pendantSlotTwo" name="pendantSlotTwo" value="">
+									<input type="hidden" id="pendantSlotThree" name="pendantSlotThree" value="">
+									<input type="hidden" id="pendantSlotFour" name="pendantSlotFour" value="">
+									<input type="hidden" id="pendantSlotFive" name="pendantSlotFive" value="">
+									<input type="hidden" id="pendantSlotSix" name="pendantSlotSix" value="">
+									<input type="hidden" id="pendantSlotSeven" name="pendantSlotSeven" value="">
+									<input type="hidden" id="pendantSlotEight" name="pendantSlotEight" value="">
+									<input type="hidden" id="pendantSlotNine" name="pendantSlotNine" value="">
+									<input type="hidden" id="pendantSlotTen" name="pendantSlotTen" value="">
+									<input type="hidden" id="pendantSlotEleven" name="pendantSlotEleven" value="">
+									<input type="hidden" id="pendantSlotTwelve" name="pendantSlotTwelve" value="">
+									
+									<input type="hidden" id="pendantSlotInfo" name="pendantSlotInfo" value="">
+								
+									
+								</form>
+						</div>
+					
+					
+				
+				</div>
+		
+		</div>
+	
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div class="container marginTop navButtons">
+	
+		<div class="row">
+		
+			<button class="btn btn-aci btn-lg" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span> Prev</button>
+			
+			
+			
+			
+			<button class="btn btn-aci btn-lg pull-right" id="nextBtn">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+		
+		</div>
+	
+	</div>
+		
+
+	
+
+
+	
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	
+	<script>
+	
+
+			var jsonPendantInfo = [
+			/*Slot One   */  {"partNumber":"turd", "btnDesc":"fart"},
+			/*Slot Two   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Three */  {"partNumber":"", "btnDesc":""},
+			/*Slot Four  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Five  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Six   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Seven */  {"partNumber":"", "btnDesc":""},
+			/*Slot Eight */  {"partNumber":"", "btnDesc":""},
+			/*Slot Nine  */  {"partNumber":"", "btnDesc":""},
+			/*Slot Ten   */  {"partNumber":"", "btnDesc":""},
+			/*Slot Eleven*/  {"partNumber":"", "btnDesc":""},
+			/*Slot Twelve*/  {"partNumber":"", "btnDesc":""},
+		
+			];
+
+			
+
+		
+//	'[{"partNumber":"0", "btnDesc":"a"},{"partNumber":"1", "btnDesc":"b"},{"partNumber":"2", "btnDesc":"c"},
+//	{"partNumber":"3", "btnDesc":"d"}, {"partNumber":"4", "btnDesc":"e"}, {"partNumber":"", "btnDesc":""}, {"partNumber":"6", "btnDesc":"g"},
+//  {"partNumber":"7", "btnDesc":"h"},
+//  {"partNumber":"8", "btnDesc":"i"},
+// 	{"partNumber":"9", "btnDesc":"j"},
+// 	{"partNumber":"10", "btnDesc":"k"},
+//  {"partNumber":"11", "btnDesc":"l"}]'		
+		
+			
+
+			$("#poops").click(function() {
+				$("#pendantSlotInfo").val(
+				"\'[{\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[2].partNumber + "\", \"" + jsonPendantInfo[2].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[3].partNumber + "\", \"" + jsonPendantInfo[3].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[4].partNumber + "\", \"" + jsonPendantInfo[4].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[5].partNumber + "\", \"" + jsonPendantInfo[5].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[6].partNumber + "\", \"" + jsonPendantInfo[6].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[7].partNumber + "\", \"" + jsonPendantInfo[7].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[8].partNumber + "\", \"" + jsonPendantInfo[8].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[9].partNumber + "\", \"" + jsonPendantInfo[9].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[10].partNumber + "\", \"" + jsonPendantInfo[10].btnDesc
+				+ "\"},{\"" + jsonPendantInfo[11].partNumber + "\", \"" + jsonPendantInfo[11].btnDesc
+				+ "\"}]\'"
+				
+				);
+			});
+		
+			
+			
+			  
+	
+		$("#background").css("height", $(window).height()-50);
+		
+		/*Function for next button shows next slide and hides itself when it reaches final slide and displays previous always*/
+		$("#nextBtn").click(function() {			
+			$current = $(".rightPanelActive").attr('id');
+			$("#" + $current).removeClass("rightPanelActive").addClass("rightPanelInactive");
+			$("#" + $current).next().removeClass("rightPanelInactive").addClass("rightPanelActive");
+			$("#prevBtn").css("opacity", 1);
+			$("#prevBtn").css("left", 0);
+			
+			$next = $("#" + $current).next().attr('id');
+			if($next == 'reviewPendantRight'){
+				$("#nextBtn").css("opacity", 0);
+				$("#nextBtn").css("left", -5000);
+			} 
+			
+			$('li.active').removeClass('active');
+			$("li[data-slide='" + $next + "']").addClass('active');
+		});
+		
+		/*Function for previous button shows previous slide and hides itself when it reaches final slide and displays next always*/
+		$("#prevBtn").click(function() {			
+			$current = $(".rightPanelActive").attr('id');
+			$("#" + $current).removeClass("rightPanelActive").addClass("rightPanelInactive");
+			$("#" + $current).prev().removeClass("rightPanelInactive").addClass("rightPanelActive");
+			$("#nextBtn").css("opacity", 1);
+			$("#nextBtn").css("left", 0);
+			$prev = $("#" + $current).prev().attr('id');
+			if($prev == 'choosePendantRight'){
+				$("#prevBtn").css("opacity", 0);
+				$("#prevBtn").css("left", -5000);
+			}
+			
+			
+			$('li.active').removeClass('active');
+			$("li[data-slide='" + $prev + "']").addClass('active');
+		});
+		
+		$('.steps').click(function(){
+			//$current = $('li.active').data('slide');
+			$(".posAbs.rightPanelActive").removeClass("rightPanelActive").addClass("rightPanelInactive");
+			$('li.active').removeClass('active');
+			
+			$(this).addClass('active');
+			$next = $(this).data('slide');
+			$("#" + $next).removeClass("rightPanelInactive").addClass("rightPanelActive");
+			
+			if($next != 'reviewPendantRight'){ /*make shit reusable like nth-type and last of type and shit */
+				$("#nextBtn").css("opacity", 1);
+				$("#nextBtn").css("left", 0);
+			}
+			if($next != 'choosePendantRight'){
+				$("#prevBtn").css("opacity", 1);
+				$("#prevBtn").css("left", 0);
+			}
+				
+			if($next == 'reviewPendantRight'){
+				$("#nextBtn").css("opacity", 0);
+				$("#nextBtn").css("left", -5000);
+			}
+			if($next == 'choosePendantRight'){
+				$("#prevBtn").css("opacity", 0);
+				$("#prevBtn").css("left", -5000);
+			}
+		});
+				
+		
+		/* Creates the draggable clone for any button */
+		/*  helper:clone allows us to pull a clone, not the actual item
+			containment:window prevents the user from pulling the items off screen
+			appendTo:body allows the cloned item to be above everything in the html to avoid overflow and other styling
+			cursorAt: {top:[50% of the height of .dragDropItem.ui-draggable-dragging],left:[50% of the width of .dragDropItem.ui-draggable-dragging]}
+		
+		*/
+		$(".dragDropItem").draggable({opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing", cursorAt: {top:50,left:75}});
+		
+		
+		/* Toggles the flip on click of the specific boxes [front to back] */
+		$(".fa-info-circle").click(function() {
+			$(this).parent().parent(".flipper").addClass("flipped");
+		});
+		
+		/* Toggles the flip on click of the specific boxes [back to front] */
+		$(".fa-chevron-circle-left").click(function() {
+			$(this).parent().parent(".flipper").removeClass("flipped");
+		});
+		
+		/*Toggles the panel body under the panel header of page two and changes the chevron arrow to reflect it's status*/
+		$(".panelToggler").click(function(){
+			$(this).next(".panel-body").slideToggle(350);
+			$(this).children("span").toggleClass("panelOpen","");
+		});
+		
+		/* Modal on page load */
+		$(window).load(function(){
+			$('#startModa').modal('show');
+		});
+		
+		
+		
+		
+		
+		
+	<!--Functions below graciously provided by Dido's Cafe-->	
+	
+
+	$('.firstPanelItem').click(function() {
+		$words = ["Two", "Four", "Six", "Eight", "Ten", "Twelve"];
+		var select_num = $(".firstPanelItem").index(this); 
+		$selection = (select_num + 1)*2;
+		$(".buttonSpace").css("display","none");
+		$(".buttonSpace").removeAttr("id");
+		$(".buttonSpace").children(".buttonInput").prop("disabled", true);
+		$(".buttonSpace").slice(0, $selection).css("display","flex");
+		$(".buttonSpace").slice(0, $selection).children(".buttonInput").removeAttr("disabled");
+		$(".buttonSpace:eq("+ ($selection-1) +")").attr("id", "lastBS");
+		$("#pendantSpan").html($words[select_num]);	
+		//$("#pendantButtonsInput").text() = $("#choosePendantLeft > p").text();
+		$("#pendantButtonsInput").val($("#choosePendantLeft > p").text());
+		
+	});
+	
+	$(".button").draggable({opacity: 0.7, helper: "clone", scroll: false});
+	
+	$(".buttonSpace").droppable({
+	 accept:function(e){
+			if($(this).hasClass("button")){ return false} //if there is a button in it already
+			if(e.hasClass("switch") && $(this).attr("id") == "lastBS"){return false;}//if you're dragging a switch to last space
+			if(e.hasClass("switch") && $(this).next(".buttonSpace").hasClass("button")){return false;}//if you're trying to put a switch on the slot above an occupied space
+			return true;
+			},
+	 activeClass: "highlightDrop", // gives this class to the droppable object when draggable is being dragged
+	 //hoverClass: "hover",
+	 over: function(event, ui){
+		$(this).removeClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").removeClass("hover");
+		 }
+		$(this).addClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").addClass("hover");
+		 }
+	 },
+	 out: function(event, ui) {
+		$(this).removeClass("hover");
+		 if($('.ui-draggable-dragging').hasClass("switch")){
+			$(this).next(".buttonSpace").removeClass("hover");
+		 }	
+	 },
+	 drop: function(event, ui){
+		$data = ui.draggable.data();
+		
+		if(ui.draggable.hasClass("switch")){ /*if item dragged is a switch*/
+			$(this).addClass("button switch");
+			$(this).children(".btnLabel").addClass("btnLabel");	
+			$(this).next(".buttonSpace").addClass("button switch");	
+			$(this).next(".buttonSpace").removeClass("highlightDrop");	
+			$(this).next(".buttonSpace").children(".btnLabel").addClass("btnLabel");
+			$(this).children(".buttonInput").val(ui.draggable.attr("data-part"));
+			$(this).next(".buttonSpace").children(".deleteButton").hide();
+			$(this).children(".infoDisplay").show();
+			$(this).children(".infoDisplay").addClass("switchInfo");
+			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);			
+			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
+			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
+			var index = $(".buttonSpace").index(this);
+			jsonPendantInfo[index].partNumber = $data.partno + " | Button 1/2 " ;
+			jsonPendantInfo[index].btnDesc = $data.desc;
+			jsonPendantInfo[index+1].partNumber = $data.partno + " | Button 2/2 ";
+			jsonPendantInfo[index+1].btnDesc = $data.desc;
+			
+			
+			//$(this).next(".buttonSpace").children(".infoDisplay").show();
+				if(ui.draggable.hasClass("onOff")) {
+					$(this).addClass("on");
+					$(this).next(".buttonSpace").addClass("off");
+				}
+		}else{
+			$(this).children(".btnLabel").addClass("btnLabel");
+			$(this).children(".infoDisplay").show();
+			$(this).children(".infoDisplay").children(".btnPartNo").html($data.partno);
+			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);
+			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
+			$(this).addClass("button");		
+			$(this).children(".buttonInput").val(ui.draggable.attr("data-part"));
+			$(this).children(".deleteButton").attr("style");
+			var index = $(".buttonSpace").index(this);
+			jsonPendantInfo[index].partNumber = $data.partno;
+			jsonPendantInfo[index].btnDesc = $data.desc;
+			
+				if(ui.draggable.hasClass("pushLock")) {
+					$(this).addClass("pushLock");
+				};
+				
+				if(ui.draggable.hasClass("toggleSwitch")) {
+					$(this).addClass("toggleSwitch");
+				};
+				
+				if(ui.draggable.hasClass("blindRubber")) {
+					$(this).addClass("blindRubber");
+				};
+				
+				if(ui.draggable.hasClass("selectorSwitch")) {
+					$(this).addClass("selectorSwitch");
+				};  
+				
+			
+		}
+	 }
+	});
+	//removes button / switch
+	$(".deleteButton").click(function(){
+		if($(this).parent(".buttonSpace").hasClass("switch")){/*if switch*/
+			$(this).parent(".buttonSpace").removeClass("button  switch");
+			$(this).parent(".buttonSpace").removeClass("on off");
+			$(this).parent(".buttonSpace").next(".buttonSpace").removeClass("button  switch");
+			$(this).parent(".buttonSpace").next(".buttonSpace").removeClass("on off");
+			$(this).next(".buttonInput").attr("value", "");
+			$(this).parent(".buttonSpace").next(".buttonSpace").children(".buttonInput").attr("value", "");
+			$(this).parent(".buttonSpace").next(".buttonSpace").children(".deleteButton").removeAttr("style");
+			/*hide button side info and empty value being displayed*/
+			$(this).siblings(".infoDisplay").hide();
+			$(this).siblings(".infoDisplay").children(".btnPartNo").html("");	
+			$(this).siblings(".infoDisplay").children(".btnDesc").html("");	
+			$(this).siblings(".infoDisplay").children(".btnCover").html("");	
+			$(this).siblings(".infoDisplay").removeClass("switchInfo");
+		}else{/*else it's just one button*/
+			$(this).parent(".buttonSpace").removeClass("button selectorSwitch toggleSwitch blindRubber pushLock");
+			$(this).next(".buttonInput").attr("value", "");
+			/*hide button side info and empty value being displayed*/
+			$(this).siblings(".infoDisplay").hide();
+			$(this).siblings(".infoDisplay").children(".btnPartNo").html("");
+			$(this).siblings(".infoDisplay").children(".btnDesc").html("");	
+			$(this).siblings(".infoDisplay").children(".btnCover").html("");
+		}
+	});
+	
+	</script>
+	
+	</body>
+
+</html>
