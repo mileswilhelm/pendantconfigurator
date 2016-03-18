@@ -841,6 +841,15 @@
 			color: white;
 			background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75));
 		}
+		
+		.scroller.up {
+			top: -715px;
+			background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0));
+		}
+		
+		#hoverScroll {
+			height: 0px;
+		}
 
 	</style>
 
@@ -2267,9 +2276,15 @@
 	
 	<div class="container-fluid" id="hoverScroll">
 	
-		<div class="row scroller scrollTest">
+		<div class="row scroller" style="display:none;">
 		
 			Hover me to scroll down
+		
+		</div>
+		
+		<div class="row scroller up" style="display:none;">
+		
+			Hover me to scroll up
 		
 		</div>
 	
@@ -2318,6 +2333,18 @@ $('div.scroller').droppable( {
     accept: ".dragDropItem",
 	over: function(event, ui){
 		$("div.col-md-5.products").scrollTo({top:2000, left:700}, 2000);
+	 },
+	out: function(event, ui) {
+		$("div.col-md-5.products").stop();
+//    // stop on unhover
+	 }
+});
+
+$('div.scroller.up').droppable( {
+    hoverClass: "scrollTest",
+	accept: ".dragDropItem",
+	over: function(event, ui){
+		$("div.col-md-5.products").scrollTo({top:0, left:700}, 2000);
 	 },
 	out: function(event, ui) {
 		$("div.col-md-5.products").stop();
@@ -2439,7 +2466,7 @@ $('div.scroller').droppable( {
 			cursorAt: {top:[50% of the height of .dragDropItem.ui-draggable-dragging],left:[50% of the width of .dragDropItem.ui-draggable-dragging]}
 		
 		*/
-		$(".dragDropItem").draggable({refreshPositions: true, scroll: "true", opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing", cursorAt: {top:50,left:75}});
+		$(".dragDropItem").draggable({refreshPositions: true, scroll: "true", opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing", cursorAt: {top:50,left:75},start: function(event, ui) { $("div.scroller").toggle(); },stop:  function(event, ui) { $("div.scroller").toggle(); }});
 		
 		
 		/* Toggles the flip on click of the specific boxes [front to back] */
