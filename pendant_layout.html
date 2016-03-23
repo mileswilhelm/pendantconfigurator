@@ -289,7 +289,7 @@
 		.panel-primary>.panel-heading {
 			color: #fff;
 			background-image: none;
-			background-color: #f44;
+			background-color: #f55;
 			border:0;
 			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 			font-size: 2rem;
@@ -550,11 +550,18 @@
 		/* Last Panel */
 		
 		.estimate {
-			margin-right: 15px;
-			font-size: 22px;
-			color: #B70000;
+			font-size: 14px;
+			color: #f33;
 			font-weight: bold;
 			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+		}
+		
+		.unfilled {
+			box-shadow: 0px 0px 0px 1px #f44;
 		}
 		
 		.form-style-8{
@@ -629,8 +636,16 @@
 		}
 		.form-style-8 input[type="button"]:hover, 
 		.form-style-8 input[type="submit"]:hover {
-			background: linear-gradient(to bottom, #34CA40 5%, #30C943 100%);
 			background-color: #34CA46;
+		}
+		
+		.form-style-8 input#confirmPendant{
+			background-color: #F78738;
+			box-shadow: inset 0px 0px 4px 0px #D65245;
+			border: 1px solid #A07B27;
+		}
+		.form-style-8 input#confirmPendant:hover {
+			background-color: #EAAA4A;
 		}
 		
 		/* Animated buttons */
@@ -756,7 +771,52 @@
 			box-shadow: inset 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
 		}
 		
-		/* Screen fixes for non-desktops */
+		
+		
+		.scroller {
+			height: 100px;
+			width: 21%;
+			margin-left: 20px;
+			top: -100px;
+			position: relative;
+			left: 20.5rem;
+			text-align: center;
+			color: white;
+			background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75));
+		}
+		
+		.scroller.up {
+			top: -715px;
+			background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0));
+		}
+		
+		#hoverScroll {
+			height: 0px;
+		}
+		
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-button {
+	width: 8px;
+	height:5px;
+}
+::-webkit-scrollbar-track {
+	background:#eee;
+	border: thin solid lightgray;
+	box-shadow: 0px 0px 3px #dfdfdf inset;
+	border-radius:10px;
+}
+::-webkit-scrollbar-thumb {
+	background:#333;
+	border: thin solid gray;
+	border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+	box-shadow: 0px 0px 3px #f77 inset;
+}			
+
+/* Screen fixes for non-desktops */
 		
 		/*@media screen and (max-width: 800px) {
 			.nav-tabs.nav-justified>li {
@@ -797,6 +857,10 @@
 			.products, .productsBorder {
 				height: 745px;
 			}
+			
+			.scroller.up {
+				top: -845px;
+			}
 		
 		}
 		
@@ -830,25 +894,9 @@
 				width: 57%;
 			}
 		}
-		
-		.scroller {
-			height: 100px;
-			width: 21%;
-			margin-left: 20px;
-			top: -100px;
-			position: relative;
-			left: 20rem;
-			color: white;
-			background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75));
-		}
-		
-		.scroller.up {
-			top: -715px;
-			background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0));
-		}
-		
-		#hoverScroll {
-			height: 0px;
+
+		.button > i.deleteButton.review {
+			display: none;
 		}
 
 	</style>
@@ -2242,8 +2290,7 @@
 						<div class="form-style-8">
 							<h2>Contact Information</h2>
 							
-							<button id="poops">CLICK</button>
-			<div id="testme"></div>
+							
 							
 								<form action="sendMail.php" method="post" id="submitform">
 									<input type="text" class="form-control" name="customerName" placeholder="Full Name" required/>
@@ -2253,8 +2300,9 @@
 									<input type="email" class="form-control" name="customerEmail" placeholder="Email Address" required/>
 									
 									<textarea placeholder="Message"></textarea>
-									<input type="button" id="sendRequest" value="Send Request" />
-									<!--<p class="marginMiniTop estimate pull-right">Estimated Price: $400.26</p>-->
+									
+									<input type="submit" id="sendRequest" class="buttonToggle" value="Send Request"/>
+									<p class="marginMiniTop estimate pull-right" id="confirmError"></p>
 									
 									<input type="hidden" id="pendantButtonsInput" name="NumberOfButtons" value="Two Button Pendant">
 									
@@ -2326,32 +2374,72 @@
 	
 	<!-- jQuery Touch Punch add-on for mobile drag and drop-->
 	<script src="jQuery_touch_punch.js"></script>
+	
+	<!-- jQuery validate form library -->
+	<script src="jquery_validate_min.js"></script>
+	
+	<!-- jQuery addon to validate -->
+	<script src="jquery_additional_methods.js"></script>
+	
 	<script>
+	
+	$(document).ready(function () {
 
-$('div.scroller').droppable( {
-    hoverClass: "scrollTest",
-    accept: ".dragDropItem",
-	over: function(event, ui){
-		$("div.col-md-5.products").scrollTo({top:2000, left:700}, 2000);
-	 },
-	out: function(event, ui) {
-		$("div.col-md-5.products").stop();
-//    // stop on unhover
-	 }
+    $('#submitform').validate({ // initialize the plugin
+        ignore: [],
+		rules: {
+            customerName: {
+                required: true,
+				minlength: 3
+            },
+            companyName: {
+                required: false
+            },
+			customerPhone: {
+                required: true,
+                digits: true,
+				minlength: 9,
+            },
+            customerEmail: {
+                required: true,
+                email: true
+            },
+			pendantSlotInfo: {
+				required: true
+			},
+        },submitHandler: function (form) { // for demo
+            alert('valid form submitted'); // for demo
+            return false; // for demo
+        }
+    });
+
 });
 
-$('div.scroller.up').droppable( {
-    hoverClass: "scrollTest",
-	accept: ".dragDropItem",
-	over: function(event, ui){
-		$("div.col-md-5.products").scrollTo({top:0, left:700}, 2000);
-	 },
-	out: function(event, ui) {
-		$("div.col-md-5.products").stop();
-//    // stop on unhover
-	 }
-});
+			$('div.scroller').droppable( {
+				hoverClass: "scrollTest",
+				accept: ".dragDropItem",
+				over: function(event, ui){
+					$("div.col-md-5.products").scrollTo({top:2000, left:700}, 2000);
+				},
+				out: function(event, ui) {
+					$("div.col-md-5.products").stop();
+			//    // stop on unhover
+				}
+			});
+			
+			$('div.scroller.up').droppable( {
+				hoverClass: "scrollTest",
+				accept: ".dragDropItem",
+				over: function(event, ui){
+					$("div.col-md-5.products").scrollTo({top:0, left:700}, 2000);
+				},
+				out: function(event, ui) {
+					$("div.col-md-5.products").stop();
+			//    // stop on unhover
+				}
+			});
 
+		
 
 			var jsonPendantInfo = [
 			/*Slot One   */  {"partNumber":"", "btnDesc":""},
@@ -2369,7 +2457,7 @@ $('div.scroller.up').droppable( {
 		
 			];
 
-			$("#poops").click(function() {
+			$("#sendRequest").click(function() {
 				$("#pendantSlotInfo").val(
 				"\'[{\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
 				+ "\"},{\"" + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
@@ -2386,6 +2474,9 @@ $('div.scroller.up').droppable( {
 				+ "\"}]\'"
 				
 				);
+			
+			$("#submitfor").submit();
+			
 			});
 		
 			
@@ -2397,8 +2488,8 @@ $('div.scroller.up').droppable( {
 		/*Function for next button shows next slide and hides itself when it reaches final slide and displays previous always*/
 		$("#nextBtn").click(function() {			
 			$current = $(".rightPanelActive").attr('id');
-			$("#" + $current).removeClass("rightPanelActive").addClass("rightPanelInactive");
-			$("#" + $current).next().removeClass("rightPanelInactive").addClass("rightPanelActive");
+			$("#" + $current).toggleClass("rightPanelActive rightPanelInactive");
+			$("#" + $current).next().toggleClass("rightPanelActive rightPanelInactive");
 			$("#prevBtn").css("opacity", 1);
 			$("#prevBtn").css("left", 0);
 			
@@ -2406,19 +2497,24 @@ $('div.scroller.up').droppable( {
 			if($next == 'reviewPendantRight'){
 				$("#nextBtn").css("opacity", 0);
 				$("#nextBtn").css("left", -5000);
+				$(".button > i.deleteButton").toggleClass("review");
 			} 
 			
 			$('li.active').removeClass('active');
 			$("li[data-slide='" + $next + "']").addClass('active');
 		});
 		
+		/**/
+		
+		
 		/*Function for previous button shows previous slide and hides itself when it reaches final slide and displays next always*/
 		$("#prevBtn").click(function() {			
 			$current = $(".rightPanelActive").attr('id');
-			$("#" + $current).removeClass("rightPanelActive").addClass("rightPanelInactive");
-			$("#" + $current).prev().removeClass("rightPanelInactive").addClass("rightPanelActive");
+			$("#" + $current).toggleClass("rightPanelActive rightPanelInactive");
+			$("#" + $current).prev().toggleClass("rightPanelActive rightPanelInactive");
 			$("#nextBtn").css("opacity", 1);
 			$("#nextBtn").css("left", 0);
+			$(".button > i.deleteButton").toggleClass("review");
 			$prev = $("#" + $current).prev().attr('id');
 			if($prev == 'choosePendantRight'){
 				$("#prevBtn").css("opacity", 0);
@@ -2432,16 +2528,17 @@ $('div.scroller.up').droppable( {
 		
 		$('.steps').click(function(){
 			//$current = $('li.active').data('slide');
-			$(".posAbs.rightPanelActive").removeClass("rightPanelActive").addClass("rightPanelInactive");
+			$(".posAbs.rightPanelActive").toggleClass("rightPanelActive rightPanelInactive");
 			$('li.active').removeClass('active');
 			
 			$(this).addClass('active');
 			$next = $(this).data('slide');
-			$("#" + $next).removeClass("rightPanelInactive").addClass("rightPanelActive");
+			$("#" + $next).toggleClass("rightPanelActive rightPanelInactive");
 			
-			if($next != 'reviewPendantRight'){ /*make shit reusable like nth-type and last of type and shit */
+			if($next != 'reviewPendantRight'){ /* make reusable like nth-type and last of type */
 				$("#nextBtn").css("opacity", 1);
 				$("#nextBtn").css("left", 0);
+				$(".button > i.deleteButton").toggleClass("review");
 			}
 			if($next != 'choosePendantRight'){
 				$("#prevBtn").css("opacity", 1);
@@ -2451,6 +2548,7 @@ $('div.scroller.up').droppable( {
 			if($next == 'reviewPendantRight'){
 				$("#nextBtn").css("opacity", 0);
 				$("#nextBtn").css("left", -5000);
+				$(".button > i.deleteButton").toggleClass("review");
 			}
 			if($next == 'choosePendantRight'){
 				$("#prevBtn").css("opacity", 0);
@@ -2466,7 +2564,41 @@ $('div.scroller.up').droppable( {
 			cursorAt: {top:[50% of the height of .dragDropItem.ui-draggable-dragging],left:[50% of the width of .dragDropItem.ui-draggable-dragging]}
 		
 		*/
-		$(".dragDropItem").draggable({refreshPositions: true, scroll: "true", opacity: 0.5, helper: "clone", containment: "window", appendTo: "body", cursor: "-webkit-grabbing", cursorAt: {top:50,left:75},start: function(event, ui) { $("div.scroller").toggle(); },stop:  function(event, ui) { $("div.scroller").toggle(); }});
+		$(".dragDropItem").draggable({
+		
+		revert: "invalid", 
+		
+		refreshPositions: true, 
+		
+		scroll: "true", opacity: 0.5, 
+		
+		helper: "clone", 
+		
+		containment: "window", 
+		
+		appendTo: "body", 
+		
+		cursor: "-webkit-grabbing", 
+		
+		cursorAt: {top:50,left:75},
+		
+		start: function(event, ui) { 
+		
+			if ($("#pendantSpan").html() != "Two") {
+				$("div.scroller").toggle(); 
+			};
+		
+		},
+		
+		stop:  function(event, ui) { 
+		
+			if ($("#pendantSpan").html() != "Two") {
+				$("div.scroller").toggle(); 
+			}; 
+		
+		}
+		
+		});
 		
 		
 		/* Toggles the flip on click of the specific boxes [front to back] */
