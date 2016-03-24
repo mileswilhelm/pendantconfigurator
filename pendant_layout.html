@@ -898,6 +898,81 @@
 		.button > i.deleteButton.review {
 			display: none;
 		}
+		
+		@media print {
+			.products.col-md-5 {
+				max-height: 3000px;
+				min-height: 2500px;
+			}		
+			
+			body {
+				width: 100%;
+				margin: 0; padding: 0;
+				background: none;
+			}
+			
+			html {
+				font-size: 3px;
+			}
+			
+			.infoDisplay {
+				font-size: 10px;
+			}
+			
+			.infoDisplay strong {
+				font-size: 10px;
+			}
+			
+			.clear, nav, .container.marginTop, div#hoverScroll, .navButtons, ::-webkit-scrollbar, .button > i.deleteButton, ul.progressSteps, .products.col-md-6, .modal {
+				display: none;
+			} 
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		}
+		
+		.tutorialSlide {
+			max-width: 100%;
+		}
+		
+		.modalStyle {
+			background: rgba(255,255,255,0.8);
+			padding: 1rem;
+			margin-top: 5rem;
+		}
+		
+		.modalInfo {
+			position: relative;
+			font-size: 20px;
+			line-height: 27px;
+		}
+		
+		.subModalText {
+			font-size: 17px;
+			float: right;
+			margin-top: 1rem;
+		}
+		
+		.tutorialReplay {
+			position: fixed;
+			right: 0;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			line-height: 6rem;
+			color: white;
+			margin-top: 2rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+			text-shadow: 1px 1px 9px rgba(0,0,0,0.5);
+			transition: 0.5s all ease;
+		}
+		
+		.tutorialReplay:hover {
+			background: #279DC1;
+		}
 
 	</style>
 
@@ -907,7 +982,7 @@
 
 		<div class="modal in fade" id="startModal">
 	
-		<div class="container">
+		<div class="container modalStyle">
 			<div class="row">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">×</a>
@@ -924,31 +999,31 @@
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="tab1">
-									<p id="modalStartParagraph">This is ACI's revolutionary custom pendant configuration app. You can use this to choose which type of pendant you would like to customize, which buttons and switches you need, and even the color button covers you desire.</p>
+									<p id="modalStartParagraph">Thanks for using ACI's revolutionary custom pendant configuration app. You can use this to custom build a pendant, by selecting which buttons and switches you need and where you need them.</p>
 									<div class="jumbotron"><p class="modalParagraph"><strong><em>Press next to go through our tutorial or close to start configuring.</em></strong></p></div>
 									<a href="#tab2" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab2">
-									<h3 class="center">Choose a Pendant Body</h3>
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Select the number of button slots needed for your custom pendant.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slideone.jpg" alt="This slide shows that you select the number of buttons you want from the right side"/></div>
+									
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Select the number of button slots needed for your custom pendant.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slideone.jpg" alt="Select the number of button slots needed for your custom pendant."/><em class="subModalText">Press next at the bottom to continue configuring.</em></div>
 									<a href="#tab1" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab3" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab3">
-									<h3 class="center">Choose your Buttons and Switches</h3>
 									
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Simply click and drag the button or switch you want into the slot you need it in.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidetwo.jpg" alt="This slide shows that you drag the buttons/switches you want from the right side onto the pendant on the left"/></div>
+									
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Simply click and drag the button/switch you want into the desired slot.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidetwo.jpg" alt="Simply click and drag the button/switch you want into the desired slot."/><em class="subModalText">Pressing the <i class="fa fa-info-circle fa-2x modalInfo"></i> displays the wiring diagram.</em></div>
 									<a href="#tab2" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab4" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab4">
-									<h3 class="center">Choose your Button Covers</h3>
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>When the slot lights up, you can drop the button/switch into it.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidethree.jpg" alt="When the slot lights up, you can drop the button/switch into it."/></div>
 									<a href="#tab3" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab5" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab5">
-									<h3 class="center">Review your Pendant</h3>
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Once your pendant looks right, send a quote request for your custom built pendant!</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidefour.jpg" alt="This slide shows that you drag the buttons/switches you want from the right side onto the pendant on the left"/></div>
+									
+									<div class="jumbotron"><p class="modalParagraph"><strong><em>Once a button/switch is placed, it's info is displayed to the right.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidefour.jpg" alt="Once a button/switch is placed, it's info is displayed to the right."/><em class="subModalText">When your pendant looks complete and you've filled out your contact info, send the request and our staff will be in touch!</em></div>
 									
 									<a href="#tab4" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab5" data-toggle="tab" class="btn btn-danger pull-right modalControl" data-dismiss="modal">Done</a>
@@ -963,6 +1038,13 @@
 		</div>
 		
 	</div>
+	
+	<div class="tutorialReplay">
+	
+		<i class="fa fa-question-circle fa-2x"></i>
+	
+	</div>
+	
 	
 	<nav class="navbar navbar-default navbar-fixed-top">
 		
@@ -2292,14 +2374,14 @@
 							
 							
 							
-								<form action="sendMail.php" method="post" id="submitform">
+								<form action="submitPendant.php" method="post" id="submitform">
 									<input type="text" class="form-control" name="customerName" placeholder="Full Name" required/>
 									<input type="text" name="companyName" placeholder="Company Name" />
 									<input type="tel" class="form-control" name="customerPhone" placeholder="Phone Number" required/>
 									
 									<input type="email" class="form-control" name="customerEmail" placeholder="Email Address" required/>
 									
-									<textarea placeholder="Message"></textarea>
+									<textarea name="customerComments" placeholder="Message"></textarea>
 									
 									<input type="submit" id="sendRequest" class="buttonToggle" value="Send Request"/>
 									<p class="marginMiniTop estimate pull-right" id="confirmError"></p>
@@ -2413,6 +2495,10 @@
         }
     });
 
+});
+
+$(".tutorialReplay").click(function () {
+	$('#startModal').modal('show');
 });
 
 			$('div.scroller').droppable( {
@@ -2619,7 +2705,7 @@
 		
 		/* Modal on page load */
 		$(window).load(function(){
-			$('#startModa').modal('show');
+			$('#startModal').modal('show');
 		});
 		
 		
