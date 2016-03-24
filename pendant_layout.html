@@ -322,11 +322,14 @@
 			height: 100%;
 			background: rgba(0,0,0,0.75);
 			padding: 10px;
+			cursor: pointer;
 		}
 		
 		.wiringDiagram img {
 			max-height: 157px;
 			width: 228px;
+			position: absolute;
+			transition: 0.5s all ease;
 		}
 		
 		.front {
@@ -973,6 +976,22 @@
 		.tutorialReplay:hover {
 			background: #279DC1;
 		}
+		
+		#diagramEnhancer {
+			text-align: center;
+		}
+		
+		#diagramEnhancer img {
+			width: 50rem;
+		}
+		
+		@media screen and (max-width: 600px) {
+			
+			#diagramEnhancer img {
+				width: 20rem;
+			}	
+			
+		}
 
 	</style>
 
@@ -1037,6 +1056,16 @@
 			</div>
 		</div>
 		
+	</div>
+	
+	<div class="modal in fade" id="diagramZoom">
+	
+		<div class="container modalStyle">
+			<div class="modal-body" id="diagramEnhancer">
+				<a class="close pull-right unappend" data-dismiss="modal">×</a>
+			</div>
+		</div>
+	
 	</div>
 	
 	<div class="tutorialReplay">
@@ -2463,6 +2492,21 @@
 	<!-- jQuery addon to validate -->
 	<script src="jquery_additional_methods.js"></script>
 	
+	
+	<?php
+    	if(!isset($_COOKIE['tutorial'])){
+			setcookie("tutorial", "true", time()+500, "/");
+    ?>
+		<script type="text/javascript">
+			/* Modal on page load */
+			$(window).load(function(){
+				$('#startModal').modal('show');
+			});
+		</script>
+    <?}?>
+	
+	
+	
 	<script>
 	
 	$(document).ready(function () {
@@ -2500,6 +2544,15 @@
 $(".tutorialReplay").click(function () {
 	$('#startModal').modal('show');
 });
+
+$(".wiringDiagram").click(function () {
+	$(this).children("img").clone().appendTo($("#diagramEnhancer"));
+	$('#diagramZoom').modal('show');
+});
+
+$('#diagramZoom').on('hidden.bs.modal', function (e) {
+	$("#diagramEnhancer img").remove();
+})
 
 			$('div.scroller').droppable( {
 				hoverClass: "scrollTest",
@@ -2703,10 +2756,7 @@ $(".tutorialReplay").click(function () {
 			$(this).children("span").toggleClass("panelOpen","");
 		});
 		
-		/* Modal on page load */
-		$(window).load(function(){
-			$('#startModal').modal('show');
-		});
+
 		
 		
 		
