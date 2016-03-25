@@ -992,6 +992,16 @@
 			}	
 			
 		}
+		
+		.number a {
+			text-decoration: none;
+			color: white;
+			font-size: 2rem;
+		}
+		
+		.number a:hover {
+			text-decoration: underline;
+		}
 
 	</style>
 
@@ -2451,12 +2461,11 @@
 	
 	<div class="container marginTop navButtons">
 	
-		<div class="row">
+		<div class="row" style="text-align:center;">
 		
-			<button class="btn btn-aci btn-lg" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span> Prev</button>
+			<button class="btn btn-aci btn-lg pull-left" id="prevBtn"><span class="glyphicon glyphicon-chevron-left"></span> Prev</button>
 			
-			
-			
+			<span class="number"><a href="tel:+18664246478">1-866-4-A-HOIST</a></span>
 			
 			<button class="btn btn-aci btn-lg pull-right" id="nextBtn">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
 		
@@ -2598,23 +2607,23 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 
 			$("#sendRequest").click(function() {
 				$("#pendantSlotInfo").val(
-				"\'[{\"" + jsonPendantInfo[0].partNumber + "\", \"" + jsonPendantInfo[0].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[1].partNumber + "\", \"" + jsonPendantInfo[1].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[2].partNumber + "\", \"" + jsonPendantInfo[2].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[3].partNumber + "\", \"" + jsonPendantInfo[3].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[4].partNumber + "\", \"" + jsonPendantInfo[4].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[5].partNumber + "\", \"" + jsonPendantInfo[5].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[6].partNumber + "\", \"" + jsonPendantInfo[6].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[7].partNumber + "\", \"" + jsonPendantInfo[7].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[8].partNumber + "\", \"" + jsonPendantInfo[8].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[9].partNumber + "\", \"" + jsonPendantInfo[9].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[10].partNumber + "\", \"" + jsonPendantInfo[10].btnDesc
-				+ "\"},{\"" + jsonPendantInfo[11].partNumber + "\", \"" + jsonPendantInfo[11].btnDesc
+				"\'[{\"partNumber\":\"" + jsonPendantInfo[0].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[0].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[1].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[1].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[2].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[2].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[3].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[3].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[4].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[4].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[5].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[5].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[6].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[6].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[7].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[7].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[8].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[8].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[9].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[9].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[10].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[10].btnDesc
+				+ "\"},{\"partNumber\":\"" + jsonPendantInfo[11].partNumber + "\", \"btnDesc\":\"" + jsonPendantInfo[11].btnDesc
 				+ "\"}]\'"
 				
 				);
 			
-			$("#submitfor").submit();
+			$("#submitfor").submit(); //make submitform
 			
 			});
 		
@@ -2836,9 +2845,9 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 			$(this).children(".infoDisplay").children(".btnDesc").html($data.desc);			
 			$(this).children(".infoDisplay").children(".btnCover").html($data.cover);
 			var index = $(".buttonSpace").index(this);
-			jsonPendantInfo[index].partNumber = $data.partno + " | Button 1/2 " ;
+			jsonPendantInfo[index].partNumber = $data.partno + " | Button 1/2" ;
 			jsonPendantInfo[index].btnDesc = $data.desc;
-			jsonPendantInfo[index+1].partNumber = $data.partno + " | Button 2/2 ";
+			jsonPendantInfo[index+1].partNumber = $data.partno + " | Button 2/2";
 			jsonPendantInfo[index+1].btnDesc = $data.desc;
 			
 			
