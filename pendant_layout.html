@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -283,7 +283,7 @@
 		
 		.panel-primary {
 			border: #999;
-			box-shadow: 3px 1px 4px 1px #555;
+			box-shadow: 3px 1px 4px -1px #555;
 		}
 		
 		.panel-primary>.panel-heading {
@@ -819,124 +819,7 @@
 	box-shadow: 0px 0px 3px #f77 inset;
 }			
 
-/* Screen fixes for non-desktops */
-		
-		/*@media screen and (max-width: 800px) {
-			.nav-tabs.nav-justified>li {
-				float: left;
-				width: 33.3%;
-			}
-			
-			li.steps span.stepsTitle {
-				height: 60px;
-				font-size: 13px;
-			}
-
-			.navbar-header p.navbar-text {
-				font-size: 1.5rem;
-			}
-			
-			.productArea {
-				margin-left: 0;
-				margin-right: 0;
-			}
-			
-		} */
-		
-		@media screen and (min-height: 800px) {
-		
-			.products, .productsBorder {
-				height: 615px;
-			}
-			
-			.flexItem {
-				width: 250px;
-			}
-		
-		} 
-		
-		@media screen and (min-height: 1000px){
-		
-			.products, .productsBorder {
-				height: 745px;
-			}
-			
-			.scroller.up {
-				top: -845px;
-			}
-		
-		}
-		
-		@media only screen 
-		and (min-device-width : 768px) 
-		and (max-device-width : 1024px)  { 
-		
-			.nav-tabs.nav-justified>li {
-				float: left;
-				width: 33.3%;
-			}
-			
-			li.steps span.stepsTitle {
-				height: 60px;
-				font-size: 13px;
-			}
-
-			.navbar-header p.navbar-text {
-				font-size: 1.5rem;
-			}
-			
-			.productArea {
-				margin-left: 0;
-				margin-right: 0;
-			}
-		
-		}
-		
-		@media only screen and (min-width: 992px) {
-			.products.col-md-6 {
-				width: 57%;
-			}
-		}
-
-		.button > i.deleteButton.review {
-			display: none;
-		}
-		
-		@media print {
-			.products.col-md-5 {
-				max-height: 3000px;
-				min-height: 2500px;
-			}		
-			
-			body {
-				width: 100%;
-				margin: 0; padding: 0;
-				background: none;
-			}
-			
-			html {
-				font-size: 3px;
-			}
-			
-			.infoDisplay {
-				font-size: 10px;
-			}
-			
-			.infoDisplay strong {
-				font-size: 10px;
-			}
-			
-			.clear, nav, .container.marginTop, div#hoverScroll, .navButtons, ::-webkit-scrollbar, .button > i.deleteButton, ul.progressSteps, .products.col-md-6, .modal {
-				display: none;
-			} 
-			
-			* {
-				margin: 0;
-				padding: 0;
-			}
-		}
-		
-		.tutorialSlide {
+.tutorialSlide {
 			max-width: 100%;
 		}
 		
@@ -977,6 +860,10 @@
 			background: #279DC1;
 		}
 		
+		.mobileProducts {
+			display: none;
+		}
+		
 		#diagramEnhancer {
 			text-align: center;
 		}
@@ -997,10 +884,223 @@
 			text-decoration: none;
 			color: white;
 			font-size: 2rem;
+			padding: 5px;
 		}
 		
 		.number a:hover {
-			text-decoration: underline;
+			border: 2px solid white;
+		}
+		
+		.navButtons {
+			margin-top: 10px;
+		}
+		
+		a.mobileClose, a.mobileClose:hover, a.mobileClose:focus, a.mobileClose:active {
+			color: white;
+			opacity: 0.75;
+		}
+		
+		a.mobileClose {
+			color: white;
+			opacity: 0.5;
+		}
+
+/* Screen fixes for non-desktops */
+		
+		@media screen and (max-width: 1275px) {
+			.tutorialReplay {
+				margin-top: 6rem;
+				z-index: 5;
+				left: 0;
+				position: absolute;
+			}
+		}
+		
+		@media screen and (max-width: 1000px) {
+			li.steps {
+				float: left;
+				width: 33%;
+				display: table-cell;
+			}
+			
+			li.steps span.stepsTitle {
+				height: 60px;
+				font-size: 13px;
+			}
+
+			.navbar-header p.navbar-text {
+				font-size: 1.5rem;
+			}
+			
+			.productArea {
+				margin: 0;
+			}
+			
+			h2 {
+				font-size: 20px;
+			}
+			
+			.mobileProducts {
+				position: fixed;
+				display: block;
+				right: 0;
+				height: 50px;
+				width: 50px;
+				text-align: center;
+				line-height: 6rem;
+				color: white;
+				margin-top: 6rem;
+				font-size: 1.5rem;
+				cursor: pointer;
+				z-index: 5;
+				text-shadow: 1px 1px 9px rgba(0,0,0,0.5);
+				transition: 0.5s all ease;
+			}
+		
+			.mobileProducts:hover {
+				background: #FF5555;
+			}
+
+		}
+		
+		@media screen and (max-width: 400px) {
+			.navbar-brand.brandImg img {
+				max-height: 30px;
+			}
+			
+			.navbar-header p.navbar-text {
+				display: none;
+			}
+			
+			.navbar {
+				min-height: 30px;
+			}
+		}
+		
+		@media screen and (min-width: 1000px) {
+			.products.col-md-6 {
+				width: 57%;
+			}
+		}
+		
+		@media screen and (min-height: 800px) {
+		
+			.products, .productsBorder {
+				height: 615px;
+			}
+			
+			.flexItem {
+				width: 250px;
+			}
+		
+		} 
+		
+		@media screen and (min-height: 1000px){
+		
+			.products, .productsBorder {
+				height: 745px;
+			}			
+			
+			.scroller.up {
+				top: -845px;
+			}
+		
+		}
+		
+		@media only screen 
+		and (min-device-width : 768px) 
+		and (max-device-width : 1024px)  { 
+		
+			.nav-tabs.nav-justified>li {
+				float: left;
+				width: 33.3%;
+			}
+			
+			li.steps span.stepsTitle {
+				height: 60px;
+				font-size: 13px;
+			}
+
+			.navbar-header p.navbar-text {
+				font-size: 1.5rem;
+			}
+			
+			.productArea {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		
+		}
+		
+		@media only screen and (max-width: 992px) {
+			.products.col-md-6 {
+				opacity: 0;
+				display: none;
+				position: absolute;
+				top: 0;
+				height: 100%;
+				z-index: 1031;
+				transition: 0.5s all ease;
+				width: 100%;
+			}
+			
+			.form-style-8 {
+				width: 100%;
+			}
+			
+			.productsBorder {
+				display: none;
+			}
+			
+			.productArea .products.col-md-6 {
+				background: rgba(0,0,0,0.75);
+			}	
+			
+			.scroller {
+				width: 50%;
+			}
+			
+			.scroller.up {
+				top: -615px;
+			}
+		}
+
+		.button > i.deleteButton.review {
+			display: none;
+		}
+		
+		@media print {
+			.products.col-md-5 {
+				max-height: 3000px;
+				min-height: 2500px;
+			}		
+			
+			body {
+				width: 100%;
+				margin: 0; padding: 0;
+				background: none;
+			}
+			
+			html {
+				font-size: 3px;
+			}
+			
+			.infoDisplay {
+				font-size: 10px;
+			}
+			
+			.infoDisplay strong {
+				font-size: 10px;
+			}
+			
+			.clear, nav, .container.marginTop, div#hoverScroll, .navButtons, ::-webkit-scrollbar, .button > i.deleteButton, ul.progressSteps, .products.col-md-6, .modal {
+				display: none;
+			} 
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
 		}
 
 	</style>
@@ -1081,6 +1181,12 @@
 	<div class="tutorialReplay">
 	
 		<i class="fa fa-question-circle fa-2x"></i>
+	
+	</div>
+	
+	<div class="mobileProducts">
+	
+		<i class="fa fa-plus-circle fa-2x"></i>
 	
 	</div>
 	
@@ -1269,7 +1375,9 @@
 		
 		<div class="productsBorder"></div>
 		
-		<div class="col-md-6 products overflowControl" style="right: 0;">
+		<div class="col-md-6 products overflowControl">
+		
+			<a class="close mobileClose" data-dismiss="products">×</a>
 		
 			<!-- Innards for step 1: choose a pendant body -->
 				<div id="choosePendantRight" class="posAbs rightPanelActive">
@@ -2459,7 +2567,7 @@
 	
 	</div>
 	
-	<div class="container marginTop navButtons">
+	<div class="container navButtons">
 	
 		<div class="row" style="text-align:center;">
 		
@@ -2500,19 +2608,6 @@
 	
 	<!-- jQuery addon to validate -->
 	<script src="jquery_additional_methods.js"></script>
-	
-	
-	<?php
-    	if(!isset($_COOKIE['tutorial'])){
-			setcookie("tutorial", "true", time()+500, "/");
-    ?>
-		<script type="text/javascript">
-			/* Modal on page load */
-			$(window).load(function(){
-				$('#startModal').modal('show');
-			});
-		</script>
-    <?}?>
 	
 	
 	
@@ -2562,6 +2657,18 @@ $(".wiringDiagram").click(function () {
 $('#diagramZoom').on('hidden.bs.modal', function (e) {
 	$("#diagramEnhancer img").remove();
 })
+
+$(".mobileProducts").click(function () {
+	$('.products.col-md-6').css("display","block");
+	$('.products.col-md-6').css("opacity","1");
+});
+
+$('.mobileClose').click(function() {
+	$('.products.col-md-6').removeAttr('style');
+});
+
+
+
 
 			$('div.scroller').droppable( {
 				hoverClass: "scrollTest",
@@ -2641,11 +2748,14 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 			$("#prevBtn").css("opacity", 1);
 			$("#prevBtn").css("left", 0);
 			
+			
 			$next = $("#" + $current).next().attr('id');
 			if($next == 'reviewPendantRight'){
 				$("#nextBtn").css("opacity", 0);
 				$("#nextBtn").css("left", -5000);
 				$(".button > i.deleteButton").toggleClass("review");
+				$('.products.col-md-6').css("display","block");
+				$('.products.col-md-6').css("opacity","1");
 			} 
 			
 			$('li.active').removeClass('active');
@@ -2694,8 +2804,11 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 			}
 				
 			if($next == 'reviewPendantRight'){
+			//check if pendant is full
 				$("#nextBtn").css("opacity", 0);
 				$("#nextBtn").css("left", -5000);
+				$('.products.col-md-6').css("display","block");
+				$('.products.col-md-6').css("opacity","1");
 				$(".button > i.deleteButton").toggleClass("review");
 			}
 			if($next == 'choosePendantRight'){
@@ -2735,6 +2848,10 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 			if ($("#pendantSpan").html() != "Two") {
 				$("div.scroller").toggle(); 
 			};
+			
+			if ($(window).width() < 1000) {
+				$('.products.col-md-6').css("opacity", "0");
+			}
 		
 		},
 		
@@ -2743,6 +2860,10 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 			if ($("#pendantSpan").html() != "Two") {
 				$("div.scroller").toggle(); 
 			}; 
+			
+			if ($(window).width() < 1000) {
+				$('.products.col-md-6').css("opacity", "1");
+			}
 		
 		}
 		
@@ -2760,11 +2881,11 @@ $('#diagramZoom').on('hidden.bs.modal', function (e) {
 		});
 		
 		/*Toggles the panel body under the panel header of page two and changes the chevron arrow to reflect it's status*/
-		$(".panelToggler").click(function(){
+		
+		$('.panelToggler').click(function() {
 			$(this).next(".panel-body").slideToggle(350);
 			$(this).children("span").toggleClass("panelOpen","");
 		});
-		
 
 		
 		
