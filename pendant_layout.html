@@ -797,6 +797,11 @@
 			height: 0px;
 		}
 		
+		.close {
+			font-size: 4rem;
+			line-height: 2rem;
+		}
+		
 ::-webkit-scrollbar {
 	width: 10px;
 }
@@ -818,10 +823,6 @@
 ::-webkit-scrollbar-thumb:hover {
 	box-shadow: 0px 0px 3px #f77 inset;
 }			
-
-.tutorialSlide {
-			max-width: 100%;
-		}
 		
 		.modalStyle {
 			background: rgba(255,255,255,0.8);
@@ -833,12 +834,6 @@
 			position: relative;
 			font-size: 20px;
 			line-height: 27px;
-		}
-		
-		.subModalText {
-			font-size: 17px;
-			float: right;
-			margin-top: 1rem;
 		}
 		
 		.tutorialReplay {
@@ -903,6 +898,59 @@
 		a.mobileClose {
 			color: white;
 			opacity: 0.5;
+		}
+		
+		.tutorialSlideOne {
+			display: none;
+		}
+		
+		.tutorialSlideTwo {
+			background-image: url('tutorialslides/slideone.jpg');
+		}
+		
+		.tutorialSlideThree {
+			background-image: url('tutorialslides/slidetwo.jpg');
+		}
+		
+		.tutorialSlideFour {
+			background-image: url('tutorialslides/slidethree.jpg');
+		}
+		
+		.tutorialSlideFive {
+			background-image: url('tutorialslides/slidefour.jpg');
+		}
+		
+		.slideTutorial {
+			height: 50rem;
+			background-size: cover;
+			margin: 0 auto;
+		}
+		
+		.subModalText:after {
+			font-style: italic;
+			font-size: 1em;
+			float: right;
+		}
+		
+		.modalTextOne:after {
+			content: "Press next to continue through the tutorial.";
+			font-weight: bold;
+		}
+		
+		.modalTextTwo:after {
+			content: "";
+		}
+		
+		.modalTextThree:after {
+			content: "Press the info circle for wiring diagrams.";
+		}
+		
+		.modalTextFour:after {
+			content: "When the slot lights up, you can drop the button/switch into it.";
+		}
+		
+		.modalTextFive:after {
+			content: "When your pendant looks complete and you've filled out your contact info, send the request and our staff will be in touch!";
 		}
 
 /* Screen fixes for non-desktops */
@@ -1063,6 +1111,66 @@
 			.scroller.up {
 				top: -615px;
 			}
+			
+			.desktopTutorial {
+				display: none;
+			}
+			
+			.tutorialSlideOne {
+				background-image: url('tutorialslides/mobileslideone.jpg');
+				display: block;
+			}
+		
+			.tutorialSlideTwo {
+				background-image: url('tutorialslides/mobileslidetwo.jpg');
+			}
+			
+			.tutorialSlideThree {
+				background-image: url('tutorialslides/mobileslidethree.jpg');
+			}
+			
+			.tutorialSlideFour {
+				background-image: url('tutorialslides/mobileslidefour.jpg');
+			}
+			
+			.tutorialSlideFive {
+				background-image: url('tutorialslides/mobileslidefive.jpg');
+			}
+			
+			.modal-header h1 {
+				font-size: 26px;
+				margin: 5px 0;
+			}
+			
+			.slideTutorial {
+				height: 30rem;
+				width: 30rem;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			
+			.modalTextOne:after {
+				content: "Press the plus symbol to select the size of your custom pendant.";
+				font-weight: normal;
+			}
+			
+			.modalTextTwo:after {
+				content: "Select the number of buttons you need.";
+			}
+			
+			.modalTextThree:after {
+				content: "After clicking the plus symbol in step two, you can view all of the buttons and switches to place in your pendant. Press the i for wiring diagrams.";
+				margin-bottom: 15px;
+			}
+			
+			.modalTextFour:after {
+				content: "Press and drag the button or switch you want to the position you need it. When it lights up, the button can be placed.";
+			}
+			
+			.modalTextFive:after {
+				content: "When everything looks correct, fill in your contact information and our sales team will get in touch to configure your custom pendant!";
+				margin-bottom: 15px;
+			}
 		}
 
 		.button > i.deleteButton.review {
@@ -1128,31 +1236,31 @@
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="tab1">
-									<p id="modalStartParagraph">Thanks for using ACI's revolutionary custom pendant configuration app. You can use this to custom build a pendant, by selecting which buttons and switches you need and where you need them.</p>
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Press next to go through our tutorial or close to start configuring.</em></strong></p></div>
+									<p id="modalStartParagraph" class="desktopTutorial">Thanks for using ACI's revolutionary custom pendant configuration app. You can use this to custom build a pendant, by selecting which buttons and switches you need and where you need them.</p>
+									<div class="jumbotron"><div class="tutorialSlideOne slideTutorial"></div><span class="subModalText modalTextOne"></span></div>
 									<a href="#tab2" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab2">
 									
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Select the number of button slots needed for your custom pendant.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slideone.jpg" alt="Select the number of button slots needed for your custom pendant."/><em class="subModalText">Press next at the bottom to continue configuring.</em></div>
+									<div class="jumbotron"><p class="modalParagraph"><strong class="desktopTutorial"><em>Select the number of button slots needed for your custom pendant.</em></strong></p><div class="tutorialSlideTwo slideTutorial"></div><span class="subModalText modalTextTwo"></span></div>
 									<a href="#tab1" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab3" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab3">
 									
 									
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Simply click and drag the button/switch you want into the desired slot.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidetwo.jpg" alt="Simply click and drag the button/switch you want into the desired slot."/><em class="subModalText">Pressing the <i class="fa fa-info-circle fa-2x modalInfo"></i> displays the wiring diagram.</em></div>
+									<div class="jumbotron"><p class="modalParagraph"><strong class="desktopTutorial"><em>Simply click and drag the button/switch you want into the desired slot.</em></strong></p><div class="tutorialSlideThree slideTutorial"></div><span class="subModalText modalTextThree"></span></div>
 									<a href="#tab2" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab4" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab4">
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>When the slot lights up, you can drop the button/switch into it.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidethree.jpg" alt="When the slot lights up, you can drop the button/switch into it."/></div>
+									<div class="jumbotron"><p class="modalParagraph desktopTutorial"><div class="tutorialSlideFour slideTutorial"></div><span class="subModalText modalTextFour"></span></p></div>
 									<a href="#tab3" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab5" data-toggle="tab" class="btn btn-primary pull-right modalControl">Next</a>
 								</div>
 								<div class="tab-pane" id="tab5">
 									
-									<div class="jumbotron"><p class="modalParagraph"><strong><em>Once a button/switch is placed, it's info is displayed to the right.</em></strong></p><img class="tutorialSlide" src="tutorialslides/slidefour.jpg" alt="Once a button/switch is placed, it's info is displayed to the right."/><em class="subModalText">When your pendant looks complete and you've filled out your contact info, send the request and our staff will be in touch!</em></div>
+									<div class="jumbotron"><p class="modalParagraph desktopTutorial"><strong class="desktopTutorial"><em>Once a button/switch is placed, it's info is displayed to the right.</em></strong></p><div class="tutorialSlideFive slideTutorial"></div><span class="subModalText modalTextFive"></span></div>
 									
 									<a href="#tab4" data-toggle="tab" class="btn btn-warning pull-left modalControl">Prev</a>
 									<a href="#tab5" data-toggle="tab" class="btn btn-danger pull-right modalControl" data-dismiss="modal">Done</a>
@@ -2909,6 +3017,9 @@ $('.mobileClose').click(function() {
 		$("#pendantSpan").html($words[select_num]);	
 		//$("#pendantButtonsInput").text() = $("#choosePendantLeft > p").text();
 		$("#pendantButtonsInput").val($("#choosePendantLeft > p").text());
+		if ($(window).width() < 1000) {
+				$('.products.col-md-6').toggle();
+			}
 		
 		/* Clears data from the object sent to PHP when the pendant size is changed to reflect. i works as selection number because it corresponds to the first number in the array to be emptied */		
 		for (i = $selection; i < 12; i++) {		
