@@ -3,6 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #333;
+	background: -webkit-linear-gradient(#111, #222, #333, #555, #333, #222, #111);
 	background: linear-gradient(#111, #222, #333, #555, #333, #222, #111);
 }
 
@@ -89,8 +90,6 @@ div#pendant {
 	width: 20rem;
 	vertical-align: middle;
 	border-radius: 2rem;
-	-webkit-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
-	-moz-box-shadow: 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 	box-shadow: inset 0 0 1.475rem rgb(125, 84, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 	background: #FFEB3B;
 	display: inline-table;
@@ -101,11 +100,15 @@ div.button {
 	height: 12.5rem;
 	vertical-align: middle;
 	border-radius: 2rem;
+	
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
-	-webkit-box-shadow: 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
-	-moz-box-shadow: 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
 	box-shadow: inset 0 0 3.075rem 0.05rem rgb(0, 0, 0), .1rem .075rem .575rem .05rem rgba(50, 50, 50, 0.55);
 	background: #3E3E3E;
+	
+	position:relative;
 }
 
 div#pendant div.button{
@@ -125,10 +128,15 @@ div.btnLabel {
 	font-family: monospace;
 	font-weight: bold;
 	display: inline-block;
-	-webkit-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
-	-moz-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
 	box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
 	background: #d1d1d1;
+	
+	margin:auto;
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
 }
 
 .buttonSpace {
@@ -150,6 +158,9 @@ div.btnLabel {
 	position: absolute;
 	color: rgba(0,0,0,0.50);
 	display: none;
+	
+	left: 12.7rem;
+	font-size: 2.5em;
 }
 .deleteButton:hover{
 	color: rgba(0,0,0,1);
@@ -181,6 +192,8 @@ div.btnLabel {
 	padding-left: 1rem;
 	font-family: 'Roboto Slab', serif;
 	color: #222;
+	left: 17rem;
+	min-width: 25rem;
 }
 .infoDisplay strong{
 	font-size: 2rem;
@@ -220,6 +233,7 @@ div.btnLabel {
 .rightPanelActive {
 	opacity: 1;
 	z-index: 4;
+	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
 
@@ -240,8 +254,6 @@ button#prevBtn {
 	height: 515px;
 	overflow: auto;
 	-webkit-transition: 0.5s all ease;
-	-moz-transition: 0.5s all ease;
-	-o-transition: 0.5s all ease;
 	transition: 0.5s all ease;
 }
 
@@ -274,19 +286,24 @@ button#prevBtn {
 .panel-body {
 	background: #ccc;
 	border: 1px solid #888;
+	overflow: auto;
 }
 
 .flexContainer {
-	perspective: 1000;
+	-webkit-perspective: 1000;
+	        perspective: 1000;
 }
 
 .flipper.flipped {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 
 .flipper {
+	-webkit-transition: 0.6s;
 	transition: 0.6s;
-	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
 	height: 100%;
 	width: 100%;
 }
@@ -304,16 +321,19 @@ button#prevBtn {
 	max-height: 157px;
 	width: 228px;
 	position: absolute;
+	-webkit-transition: 0.5s all ease;
 	transition: 0.5s all ease;
 }
 
 .front {
 	z-index: 2;
-	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+	        transform: rotateY(0deg);
 }
 
 .back {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 
 .partTitle {
@@ -321,12 +341,30 @@ button#prevBtn {
 }
 
 ul.flexContainer {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-	align-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;   
+
+	-webkit-flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+	-webkit-align-content: flex-start;
+	    -ms-flex-line-pack: start;
+	        align-content: flex-start;
 	list-style-type: none;
 	padding: 0;
 }
@@ -334,7 +372,7 @@ ul.flexContainer {
 .flexItem {
 	width: 200px;
 	height: 200px;
-	margin: 10px auto auto auto;
+	margin: 1em;
 	border: 1px solid #333;
 	position: relative;
 	list-style-type: none;
@@ -349,6 +387,7 @@ ul.flexContainer {
 	color: white;
 	font-size: 15px;
 	padding-left: 1rem;
+	-webkit-transition: all 0.35s ease;
 	transition: all 0.35s ease;
 }
 
@@ -358,7 +397,8 @@ ul.flexContainer {
 	cursor: all-scroll;
 	cursor: grab;
 	cursor: -webkit-grab;
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -441,9 +481,11 @@ ul.flexContainer {
 /* All draggable page two items have the partTwoItem class, allowing the clones made on all types to have sizes */
 
 
-
+.dragDropItem.ui-draggable.ui-draggable-handle{
+	background-size: cover;	
+}
 .dragDropItem.ui-draggable-dragging {
-	height: 150px;
+	height: 220px;
 	width: 200px;
 }
 
@@ -453,6 +495,12 @@ ul.flexContainer {
 	background: url(../images/two_switch.png) no-repeat center center;
 	background-size: cover;
 	height: 100%;
+}
+/* I.IV On and Off Two Button Switches*/
+
+.onOff.twoButtonSwitch {
+	background: url(../images/onoff_switch.png) no-repeat center center;
+	background-size: cover;
 }
 
 /* II. Selector Switch */
@@ -519,9 +567,7 @@ ul.flexContainer {
 .btn-aci:hover, .btn-aci:focus  {
 	color: white;
 	background: #f11;
-	background: -webkit-linear-gradient(#f33,#f11); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#f33,#f11); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#f33,#f11); /* For Firefox 3.6 to 15 */
+	background: -webkit-linear-gradient(#f33,#f11); /* For Safari 5.1 to 6.0 */ /* For Opera 11.1 to 12.0 */ /* For Firefox 3.6 to 15 */
 	background: linear-gradient(#f33,#f11)
 }
 
@@ -597,8 +643,6 @@ ul.flexContainer {
 }
 .form-style-8 input[type="button"], 
 .form-style-8 input[type="submit"]{
-	-moz-box-shadow: inset 0px 1px 0px 0px #45D65E;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #45D65E;
 	box-shadow: inset 0px 1px 0px 0px #45D65E;
 	background-color: #2CBB44;
 	border: 1px solid #27A047;
@@ -634,15 +678,11 @@ ul.flexContainer {
 }
 
 .buttonSpace.switch.on .btnLabel {
-	-webkit-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
-	-moz-box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
 	box-shadow: inset 0 0 .25rem #000000, .075rem .075rem .25rem .125rem rgba(50, 50, 50, 0.75);
 	border-color: #10901A;
 }
 
 .buttonSpace.switch.off {
-	-webkit-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
-	-moz-box-shadow: 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 	box-shadow: inset 0 0 1.475rem rgb(125, 16, 8), .1rem .075rem .475rem .05rem rgba(50, 50, 50, 0.55);
 	background: #EC1000;
 }
@@ -661,9 +701,8 @@ ul.flexContainer {
 .buttonSpace.button.pushLock .btnLabel {
 	border: 0;
 	background: none;
-	-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0);
-	-moz-box-shadow: 0 0 0 0 rgba(0,0,0,0);
 	box-shadow: 0 0 0 0 rgba(0,0,0,0);
+	-webkit-transition: 0.5s all ease;
 	transition: 0.5s all ease;
 }
 
@@ -696,18 +735,20 @@ ul.flexContainer {
 .buttonSpace.button.selectorSwitch .btnLabel {
 	width: 4rem;
 	height: 11rem;
-	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	        transform: rotate(-45deg);
+	-webkit-transition: 0.5s all;
 	transition: 0.5s all;
 	border: 0.5rem rgba(216, 215, 215, 0.25) solid;
-	-webkit-box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
-	-moz-box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
 	box-shadow: 0px 0px 30px 8px rgba(34,34,34,0.6);
+	background: -webkit-linear-gradient(left,#323232,#101010,#323232);
 	background: linear-gradient(to right,#323232,#101010,#323232);
 	border-radius: 1rem;
 }
 
 .buttonSpace.button.selectorSwitch .btnLabel:hover {
-	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
 }
 
 .buttonSpace.button.blindRubber .btnLabel {
@@ -715,19 +756,23 @@ ul.flexContainer {
 }
 
 .buttonSpace.button.selectorSwitch .btnLabel:hover {
-	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
 }
 
 .buttonSpace.button.toggleSwitch .btnLabel:hover {
-	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	        transform: rotate(-90deg);
 	right: -15px;
 }
 .buttonSpace.button.toggleSwitch .btnLabel {
 	box-shadow: inset 0 0 0px 0px rgba(84,84,84,0.5), 0 0 0 0 rgba(0,0,0,0);
 	background: none;
 	border: 0;
-	background-image: url("images/toggle1.png");
-	transform: rotate(-17deg);
+	background-image: url("../images/toggle1.png");
+	-webkit-transform: rotate(-17deg);
+	        transform: rotate(-17deg);
+	-webkit-transition: 0.3s all ease;
 	transition: 0.3s all ease;
 	position: relative;
 	top: 14px;
@@ -743,7 +788,8 @@ ul.flexContainer {
 }
 
 .buttonSpace.ui-droppable.button.pushLock .btnLabel:hover {
-	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
 	border:0;
 	background: none;
 	box-shadow: inset 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
@@ -760,11 +806,13 @@ ul.flexContainer {
 	left: 20.5rem;
 	text-align: center;
 	color: white;
+	background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75));
 	background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75));
 }
 
 .scroller.up {
 	top: -715px;
+	background: -webkit-linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0));
 	background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0));
 }
 
@@ -823,6 +871,7 @@ ul.flexContainer {
 	font-size: 1.5rem;
 	cursor: pointer;
 	text-shadow: 1px 1px 9px rgba(0,0,0,0.5);
+	-webkit-transition: 0.5s all ease;
 	transition: 0.5s all ease;
 }
 
@@ -876,24 +925,35 @@ a.mobileClose {
 	display: none;
 }
 
+.progress{
+	float: left;
+	position: absolute;
+	width: 20%;
+	left: 38%;
+}
+.progress-numbers{
+    float: left;
+    position: absolute;
+    left: 58.5%;
+}
 .tutorialSlideOne {
 	display: none;
 }
 
 .tutorialSlideTwo {
-	background-image: url('tutorialslides/slideone.jpg');
+	background-image: url('../tutorialslides/slideone.jpg');
 }
 
 .tutorialSlideThree {
-	background-image: url('tutorialslides/slidetwo.jpg');
+	background-image: url('../tutorialslides/slidetwo.jpg');
 }
 
 .tutorialSlideFour {
-	background-image: url('tutorialslides/slidethree.jpg');
+	background-image: url('../tutorialslides/slidethree.jpg');
 }
 
 .tutorialSlideFive {
-	background-image: url('tutorialslides/slidefour.jpg');
+	background-image: url('../tutorialslides/slidefour.jpg');
 }
 
 .slideTutorial {
@@ -931,7 +991,7 @@ a.mobileClose {
 
 /* Screen fixes for non-desktops */
 
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 995px) {
 	.tutorialReplay {
 		margin-top: 6rem;
 		z-index: 5;
@@ -965,7 +1025,7 @@ a.mobileClose {
 	}
 	
 	.mobileProducts {
-		position: fixed;
+		position: absolute;
 		display: block;
 		right: 0;
 		height: 50px;
@@ -978,6 +1038,7 @@ a.mobileClose {
 		cursor: pointer;
 		z-index: 5;
 		text-shadow: 1px 1px 9px rgba(0,0,0,0.5);
+		-webkit-transition: 0.5s all ease;
 		transition: 0.5s all ease;
 	}
 
@@ -1064,6 +1125,7 @@ and (max-device-width : 1024px)  {
 		top: 0;
 		height: 100%;
 		z-index: 1031;
+		-webkit-transition: 0.5s all ease;
 		transition: 0.5s all ease;
 		width: 100%;
 	}
@@ -1093,24 +1155,24 @@ and (max-device-width : 1024px)  {
 	}
 	
 	.tutorialSlideOne {
-		background-image: url('tutorialslides/mobileslideone.jpg');
+		background-image: url('../tutorialslides/mobileslideone.jpg');
 		display: block;
 	}
 
 	.tutorialSlideTwo {
-		background-image: url('tutorialslides/mobileslidetwo.jpg');
+		background-image: url('../tutorialslides/mobileslidetwo.jpg');
 	}
 	
 	.tutorialSlideThree {
-		background-image: url('tutorialslides/mobileslidethree.jpg');
+		background-image: url('../tutorialslides/mobileslidethree.jpg');
 	}
 	
 	.tutorialSlideFour {
-		background-image: url('tutorialslides/mobileslidefour.jpg');
+		background-image: url('../tutorialslides/mobileslidefour.jpg');
 	}
 	
 	.tutorialSlideFive {
-		background-image: url('tutorialslides/mobileslidefive.jpg');
+		background-image: url('../tutorialslides/mobileslidefive.jpg');
 	}
 	
 	a.mobileClose {
@@ -1151,7 +1213,9 @@ and (max-device-width : 1024px)  {
 		content: "When everything looks correct, fill in your contact information and our sales team will get in touch to configure your custom pendant!";
 		margin-bottom: 15px;
 	}
-	
+	ul.flexContainer{
+	  display: -webkit-box;
+	}
 }
 
 .button > i.deleteButton.review {
@@ -1194,4 +1258,3 @@ and (max-device-width : 1024px)  {
 #emptyAlert{
 	display: none;
 }
-
